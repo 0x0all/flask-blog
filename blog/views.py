@@ -4,6 +4,5 @@ from blog import blog
 
 @blog.route('/')
 def index():
-    user = {'name': 'hand'}
-    return render_template('index.html', title = 'Home')
+    return render_template('posts/hello-world.html')
             
