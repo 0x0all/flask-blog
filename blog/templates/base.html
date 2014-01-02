@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/main.css">
+        <link rel="shortcut icon" href="/static/favicon.png">
+        <link href='http://fonts.googleapis.com/css?family=Overlock' rel='stylesheet' type='text/css'>
+        {% if title %}
+        <title>{{title}} - yakiang's blog</title>
+        {% else %}
+        <title>yakiang's blog</title>
+        {% endif %}
+    </head>
+    <body>
+        <div id="container">
+            <div id="header">
+                <a href='/'><img src="/static/favicon.png"><br></a>
+                <div id='mysns'>
+                    <a target='_blank' href='https://twitter.com/yakiang'><img src='/static/twitter.png'></a>
+                    <a target='_blank' href='https://github.com/yakiang'><img src='/static/github.png'></a>
+                    <a target='_blank' href='https://plus.google.com/104607021115600975600'><img src='/static/google.png'></a>
+                </div>
+            </div>
+            <div id="article">
+                {% block article %} {% endblock %}
+                {% block jiathis %} {% endblock %}
+                {% block duoshuo %} {% endblock %}
+            </div>
+            <!-- footer -->
+            <div id="footer">
+                <hr>
+                <span>yakiang © 2013-2014. Based on Flask</span>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,7 +1,9 @@
 #-*-coding:utf-8-*-
+from flask import render_template
 from blog import blog
 
 @blog.route('/')
-@blog.route('/index')
 def index():
-    return 'Hello Flask'
+    user = {'name': 'hand'}
+    return render_template('index.html', title = 'Home')
+            
