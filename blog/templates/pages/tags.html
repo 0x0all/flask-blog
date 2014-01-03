@@ -1,0 +1,11 @@
+{% extends 'articlelist.html' %}
+{% block articlelist %}
+{% for post in articles %}
+<div class="p">
+    <a href="/blog/{{post[1]}}">
+        <span class="aldate">{{post[0]}}</span>
+        <h2 class="altitle">{{post[1]}}</h2>
+    </a>
+</div>
+{% endfor %}
+{% endblock %}

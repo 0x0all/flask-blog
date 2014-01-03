@@ -13,22 +13,30 @@
     <body>
         <div id="container">
             <div id="header">
-                <a href='/'><img src="/static/images/favicon.png"><br></a>
-                <div id='mysns'>
-                    <a target='_blank' href='https://twitter.com/yakiang'><img src='/static/images/twitter.png'></a>
-                    <a target='_blank' href='https://github.com/yakiang'><img src='/static/images/github.png'></a>
-                    <a target='_blank' href='https://plus.google.com/104607021115600975600'><img src='/static/images/google.png'></a>
+                <a href="https://github.com/yakiang/flask-blog">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+                </a>
+                <a style='padding-left:40%;' href='/'><img src="/static/images/favicon.png"><br></a>
+                <div id='links'>
+                    <div id='pages'>
+                        <a href='/archives'>Archives</a>
+                        <a href='/about'>About</a>
+                        <a href='/projects'>Projects</a>
+                        <!-- &nbsp;&nbsp;&nbsp;&nbsp; -->
+                    </div>
+                    <div id='mysns'>
+                        <a target='_blank' href='https://twitter.com/yakiang'><img src='/static/images/twitter.png'></a>
+                        <a target='_blank' href='https://github.com/yakiang'><img src='/static/images/github.png'></a>
+                        <a target='_blank' href='https://plus.google.com/104607021115600975600'><img src='/static/images/google.png'></a>
+                    </div>
                 </div>
             </div>
-            <div id="article">
-                {% block article %} {% endblock %}
-                {% block jiathis %} {% endblock %}
-                {% block duoshuo %} {% endblock %}
-            </div>
+            {% block maincontent %} {% endblock %}
+            <br><br><br><br>
             <!-- footer -->
             <div id="footer">
-                <hr>
-                <span>yakiang © 2013-2014. Based on Flask, <a target='_blank' href='https://github.com/yakiang/flask-blog'>build the same blog as mine</a></span>
+                <hr COLOR='silver'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>yakiang © 2013-2014. Based on Flask.</span>
             </div>
         </div>
     </body>

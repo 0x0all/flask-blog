@@ -1,3 +1,46 @@
-{% extends "base.html" %}
-{% block article %}
-{% endblock %}
+{% extends "articlelist.html" %}
+{% block articlelist %}
+<div class="p"><span class="aldate">2013-12-31</span><br/><div class="preview"><h1>Late 2013</h1>
+<p>2013最后一天。 虽然每周都感觉过得很快，但每个月都能发生好多事请。  </p>
+<p>月初开始搞计算机网络课程设计，其实就是小组做一个又CS又P2P通信的小程序。小组讨论后让我和另一个做客户端，他们服务端使用java，但出于对java的反感以及曾经的VC经验我决定使用Qt 来写客户端。因为我觉得二者应该是独立的，通信协议已经确定，使用的语言不会相互影响。后来发现naive了。<br />
+在收发数据上就出现了问题，不知道服务器是怎么读的，我使用<code>QTcpSocket</code>自带的函数来发和读结果都和服务器对不上，后来两端都各自调整一下：服务端修改读取数据的方式，客户端要判断数据是否读满才行。因为客户端收到的数据貌似是分块的，一次来一点，需要判断什么时候完整了才行。这也是在StackOverflow提问才明白的，毕竟之前写Qt 没有接触过网络编程的。话说觉得Qt 这个信号与槽的机制与node.js的事件驱动还是蛮像的，没有阻塞性，所以客户端要实现十秒一次的心跳信息时我也不需要劳神去处理多线程之类的任务，直接开一个<code>QTimer</code>倒计时就好了，时间到了自己会执行。<br />
+</div><br/><a class="readmore" href="/blog/late-2013">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-11-27</span><br/><div class="preview"><h1>网易前端面试记</h1>
+<p>25号那天在大街网看到<a href="http://job.dajie.com/4691f33b-c67f-40db-9f5f-13b5cd7eca4d.html">网易招聘前端实习</a>，虽然自己不是专攻前端的但还是完善了大街网一些基本信息，再附上简历提交了下。过了两个钟就收到了电话，由于常收到垃圾电话骚扰我还是迅速百度（这时候真就该用百度）了下号码，没发现异常，于是再接。好在接了。对方核实了下身份，然后了解了下前端基础（其实只是问做过什么和了不了解<code>css3</code>和<code>js</code>），问是否可以接受6个月每周4天的实习，然后就说找个时间进一步了解一下。于是定在了今天下午三点。我当时就激动紧张兴奋了，没想到那么一投就获得了机会。
+</div><br/><a class="readmore" href="/blog/netease-internship-interview">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-11-16</span><br/><div class="preview"><h1>Recent projects</h1>
+<p>大三的确是很忙呀，每天好多课，课好难还好多作业。虽然我比起不少人已经算不错的了，而且打一开始就没打算做个乖乖上课的好学生（never were），而是打算利用课余时间多看书多学点新技术多做点项目。除了计网和web2.0其他不打算那么认真，而发现2.0其实好水。。<br />
+所以经常上课走神了就会在想结合那些技术可以做些什么东西或应用，这直接导致了上完某些课我总能记下好多inspiring notes。 但不是每个idea都能付诸实践，更不是每个东西动手了就能完成。最近深有体会。。  </p>
+<h3>md5</h3>
+<p>先说说web安全课要求的md5的c++实现吧。之前只知道python下可以<code>hashlib.md5(str).hexdigest()</code>轻易实现，等要自己实现才发现过程好麻烦。看<a href="http://baike.baidu.com/view/7636.htm">百度百科</a>或维基也完全无头绪，网上很少有讲到细节的。
+</div><br/><a class="readmore" href="/blog/recent-projects">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-10-12</span><br/><div class="preview"><h1>可视化微博关系</h1>
+<p>之前一直想用<code>three.js</code>做个什么东西，稍稍看了点教程发现js基础还不行 - - 于是想还是从<code>canvas</code>开始学吧。于是在<a href="http://www.html5canvastutorials.com">这个网站</a>看简单的教程（不过国内访问真心慢），看了两三天就想动手干了，因为知道自己要做什么，就是将微博上的好友关系可视化一下，还要让它动起来。<br />
+后端的话就使用<code>Tornado</code>，一直想在SAE上试试<code>tornado</code>，<a href="http://gettingstarted.sinaapp.com/introduction.html">这儿</a>的教程还不错。主要是第一次在SAE使用上<code>mysql</code>，没有里面的代码示例还真不知道怎么开始。<br />
+</div><br/><a class="readmore" href="/blog/visual-weibo-relations">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-09-30</span><br/><div class="preview"><h1>微博版中文锐推客</h1>
+<p>作为程序员哪能不翻墙，翻墙哪能不上推。偶然看到twitter上<a href="https://twitter.com/RTKcn">@RTKcn</a> （昵称是“中文锐推客”）这个帐号，觉得很不错，它会自动获取twitter上转发最多的中文推再转推到自己帐号，介绍页面在<a href="http://rtbot.laobubu.net">这里</a> 。<br />
+然后它的推文质量确实挺高的，就不说那些不适宜在天朝出现的了，其他的大都很搞笑，而且目测微博上一些很火的段子原始出处也是twitter来的。然后我就曾想把它一些好的推文发到自己微博帐号上，于是曾经琢磨着写个Chrome插件，可以在twitter页面直接发到微博上去。暑假时钻研了许久，最后还是失败了。Sigh，插入自定义<code>css</code>和<code>js</code>到头部了但就是不按我要的方式来；<code>post</code>到一个页面里已有的隐藏<code>iframe</code>了（而且它本身发推的表单也是target到这个iframe）但就是post完要重定向。无奈作罢。。。<br />
+等到前两天才想起可以做一个微博上的锐推客，把twitter那个的推文照搬过来就好了，反正vps在美国上推不成问题，<code>ping weibo</code>也不慢。想到就干，申请了微博帐号<a href="http://weibo.com/RTKCN">@中文锐推客</a> 后（lucky，没人叫这名字)，就去研究twitter开放平台文档了。<br />
+</div><br/><a class="readmore" href="/blog/weibo-rtkcn">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-09-11</span><br/><div class="preview"><h1>Notes of Summer</h1>
+<p>两个月的暑假过了，终于开始大三鸟-。-<br />
+暑假时买了个低配置VPS当作自己的生日礼物，后来又系统地学学前端，主要是js，积累了些笔记，就一次性记在这里吧。<br />
+<br>
+首先是编译vim7.4 。由于官方还一直是7.3，为了<a href="https://github.com/Valloric/YouCompleteMe">YouCompleteMe</a>所以干脆升到7.4好了。<br />
+由于某种狗日的原因vim官网上不去，所以我去了<a href="http://ftp.tw.vim.org/pub/vim/unix/">这里</a>下载最新代码包。<br />
+</div><br/><a class="readmore" href="/blog/notes-of-summer">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-08-08</span><br/><div class="preview"><h1>[微信-微博]树洞教程</h1>
+<p>同样基于SAE,使用Python实现。你得有一个SAE帐号、微信公众平台帐号和一个微博帐号。<br />
+首先使用你那个微博帐号进入到<a href="http://open.weibo.com">微博开发平台</a>，登录后要去完善开发者信息，通过邮箱认证等。再在<a href="http://open.weibo.com/development">这里</a>选择创建应用，选择网页应用即可。
+</div><br/><a class="readmore" href="/blog/set-up-your-weibo-treehole">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-08-08</span><br/><div class="preview"><h1>折腾的三天,真苦逼</h1>
+<h3><a id='linux'>系统篇</a></h3>
+<p>5号晚上忽然发现Mint上不了网了，NetworkManager 那里不知为何没有了无线这个选项。此前mint一直是很好用的，但我没去怀疑硬件问题。以为是系统坏了，重启无效后心想难道是上天都要我换系统了吗。
+因为我垂涎Fedora和Arch很久了。但mint一直用得很顺手，虽然是个开箱即用的适合小白的系统，但我本来就不是什么大牛，系统嘛还是用得顺就好。所以一直没换。更何况系统的mysql里有一个爬了挺久的数据库，当初脑袋发热想统计下全国高校每个手机发微博的人都是用得什么系统。就建了个python项目，用微博api去取用户和用户发的微博尾巴，自己写爬虫去抓每个用户的大学（这个api已经不支持了只能自己抓）。然后自己抓其实是很没效率的，微博的cookie一天就失效，而且每个用户的大学居然能花几秒来抓。。其实我该优化下的但迟迟没动手。结果是没有服务器的情况下，想起这个项目时就顺便运行一下，所以每天抓的时间很少，几个月下来才5万多用户+一万多有具体数据（大学、手机客户端类型）的用户。由于换系统还得备份mysql，所以一直以来都在使用mint。<br />
+</div><br/><a class="readmore" href="/blog/wtf-three-days">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-06-28</span><br/><div class="preview"><h1>[微信-人人]树洞教程</h1>
+<p>寒假时给自己学校建了个微信-微博的树洞，之后陆续收到有人请教我怎么做的邮件，而且还是微信-人人的。由于没接触过人人开发所以也没帮忙。后来偶然去看了下人人API神马的，用python很快就写了个能发布状态的脚本。后来公布自己邮箱后越来越多人联系我问我怎么搞，在帮三个大学搭起人人树洞后我们也进入考试周- - 今天考完了，还是来把教程简单写一遍，有需自取，免得我一个一个去说怎么做。。<br />
+转载请注明本文链接！微信-微博树洞教程在<a href="http://yakiang.com/blog/set-up-your-weibo-treehole/">这里</a><br />
+说明：本教程的树洞基于SAE平台，使用Python实现（不会编程也不影响）。在开始之前，你应该有一个人人的公共主页；然后去<a href="http://sae.sina.com.cn">SAE</a> 注册一个SAE帐号(而且要尽快通过手机复验、实名认证），还要去<a href="http://mp.weixin.qq.com">微信公众平台</a> 注册一个微信公众帐号并通过审核。这些自己搞定，就不细说了。<br />
+</div><br/><a class="readmore" href="/blog/set-up-your-treehole">read more</a></div><hr color="silver"><div class="p"><span class="aldate">2013-06-03</span><br/><div class="preview"><h1>在Vim中刷微博</h1>
+<p>作为一个Vim圣徒，自然刷微博什么的都会想要在Vim中搞定。Emacs早就有了这种<a href="http://austinycn.github.io/weibo.emacs/">插件</a>，
+但Vim没法比，图片本身就是一大硬伤。有Google过相关插件，发现Vim下大都是只有发布微博的功能，Timeline都没法看。<br />
+于是我一直就想写一个功能全面点的插件，于是几个月前便有开始在看 <a href="http://learnvimscriptthehardway.stevelosh.com/">learn Vimscript the hard way</a>,
+后来由于时间不多，都是断断续续看了一点点而已。（不过看了的那一点对于个性化自己的.vimrc文件足够了）<br />
+于是最近又盘算着用Python来直接写插件。<a href="http://www.oschina.net/question/12_39383">这篇文章</a>能让人很好的入门,
+不需要看它后面怎么解析html文件，只需要看个大致结构,知道怎么用python开始写就好了。<br />
+然后还参考了<a href="https://github.com/vim-scripts/TwitVim">TwitVim</a>这个插件，在Vim中刷推用的。但我自己不知为何没安装成功= =  </p>
+</div><br/><a class="readmore" href="/blog/weivim">read more</a></div><hr color="silver">{% endblock %}

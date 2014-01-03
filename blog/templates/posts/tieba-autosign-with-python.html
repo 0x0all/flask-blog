@@ -1,0 +1,104 @@
+{% extends "article.html" %}
+{% block article %}
+<h1>Python实现的贴吧签到</h1>
+<p>2013-6-1 更新：<br />
+本代码已失效，但原理不变。有意者可以弄明白后自己试一下～<br />
+<br>
+<br>
+自从从别人博客那里学会了python登录微博和人人后，身为一个python爱好者遇到什么网站都想用python来实现登录。
+比如登录过我们学校的教务系统，还有飞信网页版等等。<br />
+而写一个脚本来实现贴吧签到的想法是早就有了的。之前也写过一个，但当时以为失败了，便没再弄。<br />
+今天重头开始写，成功后才发现原来之前写过的那个也是登录成功的 = =   </p>
+<p>我选的是<a href="http://wapp.baidu.com">贴吧wap版</a>，这样登录起来会少很多麻烦（比如可能会有随机码和密码加密等）。<br />
+先用火狐的httpfox (或者firefug之类的也行)检测登录贴吧的过程中和服务器的http交互数据。<br />
+<!--more-->
+<img alt="httpfox" src="{{" title="root_url }}/images/articles/tieba_autosign.png" /><br />
+一般分析postdata时如果有类似随机码或加密数据之类的那我一般是没法实现模拟登录= = 有时会重复登录或者切换马甲再登录观察一次，
+如果那些莫名其妙的数据没变或者有规律可循那是最好的了。否则我的话就只有放弃了。<br />
+这里还好，大多数数据都很简洁，只有一个uid有点费事，但通过切换马甲登录我发现这个数据好像是不变的。于是我就直接使用这串数据来模拟登录了。   </p>
+<p>然后签到也类似，通过httpfox观察到签到这个过程实际上只是GET了一个地址而已。(如果不是wap版贴吧就没有这么容易了。)<br />
+但是get的这个地址里面包含了tbs和fid这两个参数。一开始我又以为是固定的，后来发现不行。
+再仔细检查发现就在要签到的贴吧的页面源码里。  </p>
+<p>直接在代码里解释好了：</p>
+<p>```</p>
+<h1>!/usr/bin/python</h1>
+<h1>-<em>- coding:utf-8 -</em>-</h1>
+<h1>登录--&gt; 获取ssid --&gt; 进入某一贴吧 --&gt; 获取tbs &amp; fid --&gt; 签到</h1>
+<p>import urllib
+import urllib2
+import cookielib
+import time</p>
+<h1>以下几句实现了保存cookie功能，是为了登录后能成功签到。</h1>
+<h1>原理其实我还不大明白，是从别的大牛来的。</h1>
+<p>cj = cookielib.LWPCookieJar()<br />
+cookie_support = urllib2.HTTPCookieProcessor(cj) 
+opener = urllib2.build_opener(cookie_support,urllib2.HTTPHandler)<br />
+urllib2.install_opener(opener)</p>
+<h1>登录</h1>
+<p>username = raw_input('请输入登录的用户名: ')
+passwd = raw_input('请输入密码: ')
+uid = '936D8C303C6F8F6A25F1F6B8D8353B69'</p>
+<h1>下面是httpfox来的数据</h1>
+<p>loginurl = 'http://wappass.baidu.com/passport/'
+logindata = {
+        'login_username':username,
+        'login_loginpass':passwd,
+        'aaa':'登录',
+        'login':'yes',
+        'can_input':'0',
+        'u':'http://wapp.baidu.com',
+        'login_start_time':int(time.time()),
+        'tpl':'tb',
+        'tn':'bdIndex',
+        'pu':'',
+        'ssid':'',
+        'from':'',  <br />
+        'bd_page_type':'1',
+        'uid':uid,
+        'login_username_input':'0',
+        'type':''  <br />
+        }
+logindata = urllib.urlencode(logindata)</p>
+<p>req = urllib2.Request(url = loginurl, data = logindata)
+login = urllib2.urlopen(req).read()
+if '密码有误' in login:
+    print '密码错误，登录失败'
+    exit(-1)</p>
+<h1>登录成功后的数据里有一个地址，里面有接下来要用到的ssid。</h1>
+<h1>不过我是用处理字符串的方式来提取ssid，略低效和笨拙</h1>
+<p>p_ssid = login.find('ssid') + 5
+login = login[p_ssid:]
+p_ssid_2 = login.find('"')
+ssid = login[:p_ssid_2]</p>
+<h1>签到</h1>
+<p>ba = raw_input('输入贴吧名字:') <br />
+ba = ba.decode('utf-8').encode('gbk')</p>
+<h1>要先模拟打开这个贴吧，在打开页面的html里获取下面要用的tbs &amp; fid</h1>
+<p>temp_qdurl = 'http://wapp.baidu.com/mo/q-%s--%s--1-1-0--2/m?kw=%s' % (ssid, uid, ba)
+html = urllib2.urlopen(temp_qdurl).read()
+if '尚未建立' in html:
+    print '贴吧不存在'
+    exit(-1)</p>
+<h1>同样笨拙的方法来提取tbs &amp; fid</h1>
+<p>p_tbs = html.find('tbs')
+tbs = html[p_tbs+4:]
+p_tbs_2 = tbs.find('&amp;')
+tbs = tbs[:p_tbs_2]</p>
+<p>p_fid = html.find('fid')
+fid = html[p_fid+4:]
+p_fid_2 = fid.find('&amp;')
+fid = fid[:p_fid_2]</p>
+<p>qd_url = 'http://wapp.baidu.com/mo/q-%s--%s--1-1-0--2/sign?tbs=%s&amp;fid=%s&amp;kw=%s'%(ssid, uid, tbs, fid, ba)
+qiandao = urllib2.urlopen(qd_url).read()
+```
+这样就搞定了。其实有不少改进空间的，比如可以实现从一个文件中读取所有贴吧列表逐一签到，还可以用PyQt实现一个GUI版，
+还有应该加入更多异常处理，或者把一些操作封装在函数里等等。  </p>
+<p><strong>Python</strong> 实在是很简单又很强大很全能的语言！  </p>
+<p>4-24 更新<br />
+做成了exe文件，可以批量签到。<a href="{{%20root_url%20}}/file/tieba.zip">下载</a>  </p>
+<p>6-1 更新 <br />
+貌似这个代码失效了，原因可能是上面的uid有变，得重新用httpfox看一下修改一下才能用估计。。<br />
+太懒了暂时先不搞了 -。-   </p>
+<hr />
+<p>转载请注明出处，谢谢!</p>
+{% endblock %}

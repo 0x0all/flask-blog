@@ -51,13 +51,13 @@ def markdownToHtml():
 
         html = markdown.markdown(content).encode('utf-8')
         with open('templates/posts/{0}.html'.format(info['title']), 'w') as f:
-            f.write('{% extends "base.html" %}\n')
+            f.write('{% extends "article.html" %}\n')
             f.write('{% block article %}\n')
             f.write(html)
             f.write('\n{% endblock %}\n')
 
-        preview = html.split(PREVIEW_MORE_SPLIT[:-1])[0]
-        c.execute("INSERT INTO posts VALUES (?, ?, ?, ?)", [info['date'],
+        preview = html.split(PREVIEW_MORE_SPLIT[:-1])[0].decode('utf-8')
+        c.execute("INSERT OR REPLACE INTO posts VALUES (?, ?, ?, ?)", [info['date'],
             info['title'], info['tags'], preview])
         conn.commit()
         conn.close()

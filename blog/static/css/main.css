@@ -3,32 +3,57 @@ html, body {
     padding: 0;
     height: 100%;
     background-color: #f3f2f0;
+    font-family: 'Overlock', cursive;
+}
+
+a {
+    text-decoration: none;
+    color: #f5725d;
+}
+a:hover {
+    color: #348fd4;
 }
 
 #container {
     min-height: 100%;
     position: relative;
+    padding-left: 17%;
+    padding-right: 14%;
 }
 
 #header {
-    text-align: center;
     padding: 10px;
     padding-top: 40px;
     margin-bottom: 70px;
 }
 
+#links {
+    padding-top: 30px;
+    font-size: 24px;
+}
+
+#pages {
+    float: left;
+}
+
+#pages a{
+    color: #857e6b;
+    font-weight: bold;
+    padding-left: 50px;
+}
+#pages a:hover {
+    color: #348fd4;
+}
+
 #mysns {
-    padding-top: 20px;
-    padding-left: 250px;
+    padding-right: 25%;
+    float: right;
 }
 
 #article {
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-bottom: 60px;   /* Height of the footer */
+    padding-bottom: 40px;   /* Height of the footer */
     font-size: 22px;
     line-height: 40px;
-    font-family: 'Overlock', cursive;
 }
 
 #article img {
@@ -36,6 +61,8 @@ html, body {
 }
 
 #article code {
+    padding: 10px;
+    padding-left: 20px;
     background-color: #e3debb;
     font-family: 'Overlock', cursive;
 }
@@ -43,7 +70,27 @@ html, body {
 #footer {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 60px;   /* Height of the footer */
-    font-size: 13px;
+    height: 40px;   /* Height of the footer */
+    padding-left: 55%;
+    font-size: 15px;
 }
+
+#articlelist {
+    padding-left: 10%;
+    line-height: 30px;
+}
+
+#articlelist .p {
+    padding-bottom: 20px;
+}
+
+.aldate {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6d768d;
+}
+
+.altitle, .preview, .readmore{
+    padding-left: 6%;
+}
+
