@@ -17,7 +17,7 @@ a:hover {
 #container {
     min-height: 100%;
     position: relative;
-    padding-left: 17%;
+    padding-left: 14%;
     padding-right: 14%;
 }
 
@@ -93,4 +93,3 @@ a:hover {
 .altitle, .preview, .readmore{
     padding-left: 6%;
 }
-

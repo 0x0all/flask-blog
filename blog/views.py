@@ -3,20 +3,39 @@ from flask import render_template
 from blog import blog
 import sqlite3
 
-@blog.route('/blog/<title>')
-def index(title):
-    return render_template('posts/{0}.html'.format(title))
-            
-
-@blog.route('/archives')
-def archives():
-    return render_template('pages/archives.html')
+def getDB():
+    conn = sqlite3.connect('blog/db/posts.db')
+    return conn.cursor()
 
 
 @blog.route('/')
 @blog.route('/home')
 def home():
-    return render_template('pages/home.html')
+    PAGINATE = 10
+    c = getDB()
+    posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
+    num = PAGINATE if len(posts) > PAGINATE else len(posts)
+    return render_template('pages/home.html', articles = posts[:num])
+            
+
+@blog.route('/archives')
+def archives():
+    c = getDB()
+    posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
+    return render_template('pages/archives.html', articles = posts)
+
+
+@blog.route('/tags/<tag>')
+def tags(tag):
+    c = getDB()
+    posts = c.execute("SELECT * FROM posts WHERE tags like ? ORDER BY \
+                date DESC", ('%,{}%'.format(tag),)).fetchall()
+    return render_template('pages/tags.html', articles = posts)
+
+
+@blog.route('/blog/<title>')
+def index(title):
+    return render_template('posts/{}.html'.format(title))
 
 
 @blog.route('/about')
@@ -32,12 +51,3 @@ def projects():
 @blog.route('/resume')
 def resume():
     return render_template('pages/resume.html')
-
-
-@blog.route('/tags/<tag>')
-def tags(tag):
-    
-    conn = sqlite3.connect('blog/db/posts.db')
-    c = conn.cursor()
-    posts = c.execute("SELECT * FROM posts WHERE tags like '%,{0}%' ORDER BY date DESC".format(tag)).fetchall()
-    return render_template('pages/tags.html', articles = posts)

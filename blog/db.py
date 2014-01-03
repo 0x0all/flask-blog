@@ -10,7 +10,7 @@ c = conn.cursor()
 
 # c.execute("INSERT INTO posts VALUES ('2014-01-03', 'hello-world', ',blog', 'hahahaha')")
 
-row = c.execute("SELECT * FROM posts WHERE tags like '%,python%' ORDER BY DATE")
+row = c.execute("SELECT * FROM posts ORDER BY DATE")
 for r in row:
     print r[1]
 
