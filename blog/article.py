@@ -2,7 +2,6 @@
 #-*-coding:utf-8-*-
 
 import sys
-import glob
 import sqlite3
 import markdown
 import datetime
@@ -11,7 +10,7 @@ info = {
         'date': '',
         'title': '',
         'tags': ','
-        }
+    }
 
 
 def newPost():

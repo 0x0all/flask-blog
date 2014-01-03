@@ -10,6 +10,7 @@ a {
     text-decoration: none;
     color: #f5725d;
 }
+
 a:hover {
     color: #348fd4;
 }
@@ -17,14 +18,13 @@ a:hover {
 #container {
     min-height: 100%;
     position: relative;
-    padding-left: 14%;
-    padding-right: 14%;
+    padding-left: 10%;
+    padding-right: 16%;
 }
 
 #header {
-    padding: 10px;
     padding-top: 40px;
-    margin-bottom: 70px;
+    margin-bottom: 100px;
 }
 
 #links {
@@ -39,8 +39,9 @@ a:hover {
 #pages a{
     color: #857e6b;
     font-weight: bold;
-    padding-left: 50px;
+    margin-left: 50px;
 }
+
 #pages a:hover {
     color: #348fd4;
 }
@@ -54,6 +55,7 @@ a:hover {
     padding-bottom: 40px;   /* Height of the footer */
     font-size: 22px;
     line-height: 40px;
+    padding-left: 10%;
 }
 
 #article img {
@@ -64,15 +66,18 @@ a:hover {
     padding: 10px;
     padding-left: 20px;
     background-color: #e3debb;
-    font-family: 'Overlock', cursive;
 }
 
 #footer {
     position: absolute;
     bottom: 0;
-    height: 40px;   /* Height of the footer */
-    padding-left: 55%;
+    right: 20%;
+    height: 40px;           /* Height of the footer */
     font-size: 15px;
+}
+
+.copyright {
+    padding-left: 30px;
 }
 
 #articlelist {
@@ -84,7 +89,7 @@ a:hover {
     padding-bottom: 20px;
 }
 
-.aldate {
+#articlelist .aldate {
     font-size: 14px;
     font-weight: bold;
     color: #6d768d;

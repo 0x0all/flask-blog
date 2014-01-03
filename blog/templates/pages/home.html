@@ -3,6 +3,7 @@
 {% block articlelist %}
 {% autoescape false %}
     {% for post in articles %}
+        <hr color="silver">
         <div class="p">
             <span class="aldate">{{post[0]}}</span><br/>
             <div class="preview">
@@ -10,7 +11,6 @@
             </div>
             <a class="readmore" href="/blog/{{post[1]}}">read more</a>
         </div>
-        <hr color="silver">
     {% endfor %}
 {% endautoescape %}
 {% endblock %}
