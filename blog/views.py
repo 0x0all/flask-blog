@@ -1,5 +1,5 @@
 #-*-coding:utf-8-*-
-from flask import render_template
+from flask import render_template, url_for
 from blog import blog
 import sqlite3
 
@@ -38,16 +38,23 @@ def index(title):
     return render_template('posts/{}.html'.format(title))
 
 
-@blog.route('/about')
+@blog.route('/about/')
 def about():
-    return render_template('pages/about.html')
+    return render_template('pages/about/index.html')
 
 
-@blog.route('/projects')
-def projects():
-    return render_template('pages/projects.html')
+@blog.route('/projects/', defaults={'path':'index'})
+@blog.route('/projects/<path:path>')
+def projects(path):
+    try:
+        htmlfile = 'pages/projects/{}.html'.format(path)
+        return render_template(htmlfile)
+    except Exception, e:
+        htmlfile = 'pages/projects/{}/index.html'.format(path)
+        return render_template(htmlfile)
 
 
-@blog.route('/resume')
+
+@blog.route('/resume/')
 def resume():
-    return render_template('pages/resume.html')
+    return render_template('pages/resume/index.html')
