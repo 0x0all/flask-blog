@@ -99,9 +99,16 @@ a:hover {
     font-size: 24px;
 }
 
-pre {
-    padding: 10px;
-    padding-left: 20px;
+code {
+}
+
+pre,code{
     background-color: #e3debb;
+    padding-left: 6px;
+    padding-right: 6px;
     width: 100%;
+}
+
+ul, ol {
+    background-color: #f4ffdd;
 }

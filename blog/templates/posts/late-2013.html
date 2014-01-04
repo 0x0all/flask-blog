@@ -11,7 +11,7 @@
 然后一开始就直接使用正则来匹配关键词和地点名词直接的关系 - - 我得说最近觉得写正则感觉很爽，不论是python，js 还是vim中～为此我还特意又入了一个正则杯 =。= <br />
 <img src='http://img4.tuchuang.org/uploads/2013/12/1388498004.jpg' alt='recup' style='width:400px;' /><br />
 然后一边使用azure的服务器爬了几天几夜一共9万多个词条 - - （<code>supervisor</code>）是个好东西。结果确实还不错，但后来讨论发现没什么人工智能的算法，按老师后来的话说，“人肉智能”。于是又临时硬性加入一些算法，什么pagerank， TF-IDF = = 为了presentation好看点我又结合Tornado和Google地图做了个前端。结果被贱人老师五分钟否决，呵呵。对这种人没啥好评论的，评教时给了个呵呵。总之自己学到了东西就好。<br />
-<img alt="aimap" src="http://img2.picbed.org/uploads/2013/12/2013-12-31" title="22:08:33的屏幕截图.png" /><br />
+<img alt="aimap" src="http://img2.picbed.org/uploads/2013/12/2013-12-31 22:08:33的屏幕截图.png" /><br />
 这次AI 还让我无聊时写了个<a href="https://github.com/yakiang/baidubaike">百度百科的 python wrapper</a>（如果称不上API 的话），受那个wikipedia API 的启发，google没发现百度百科有类似的东西，于是自己也使用<code>beautifulsoup4</code>写了一个。其实不难，真的只是一层封装（虽然 bs 会莫名奇妙去掉一些html）。不过这是我第一次写“工具类”，之前都是用别人的工具写应用，第一次也自己写个工具感觉还是不错的。在vps和实验室的XP用pip安装成功的赶脚太爽了。<br />
 然后这次经历主要是让我熟悉一个 Python module 应该如何写，如何上传。之前没研究过如何 raise custom Exception ，以及<code>__init.py__</code>有什么用等，大都参考了那个wikipedia。至于上传到Pypi，找过几份教程都有点乱，最后找到<a href="http://www.diveinto.org/python3/packaging.html">dive into python</a>的一篇文章，虽然是很长的英文，但很容易懂而且十分有用！吃惊的是刚一上传上去几分钟内就有好几百下载，吓死我了。因为我还只是传了一个beta版。估计pypi官网平时都有很多人上，有些看到新的包就都下载了吧 = = 至于文档，<a href="http://readthedocs.org">readthedocs</a>是个好地方，只要把源文件放到github就会自动同步生成文档，不过需要对<code>reStructuredText</code>语法有所了解。听说还有人直接在上面开静态博客 - -  </p>
 <hr />
