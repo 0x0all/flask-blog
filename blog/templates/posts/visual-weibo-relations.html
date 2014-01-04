@@ -6,16 +6,17 @@
 <!--more-->
 <code>canvas</code>动画的话网上很多，我当时借鉴了<a href="http://spielzeugz.de/html5/liquid-particles.html">这个</a>，当时真的很意外，原来能做到这么流畅。后来我也确实看它的源码学到了不少～<br />
 一开始是处理微博授权问题，之前一直不明白为什么有的第三方网页应用可以在登录授权后立马进去应用页面了。一般来说，授权后是获得含有<code>code</code>的链接，通过这个<code>code</code>才能获取<code>access token</code>，然而刚刚说的情况看起来就好像跳过了输入“<code>code</code>获取<code>token</code>”的过程。后来通过<code>firebug</code>去抓其中一个应用来看，才发现在登录后有个重定向的过程。具体没有细看，但我已经大致知道怎么做了：将授权回调地址改为其中一个子页面，再在后台专门对这个页面进行处理，比如获取<code>url</code>中的<code>code</code>，再换取<code>token</code>，若成功再重定向到应用页面。至于那些使用官方<code>jssdk</code>的是不是这样我不知道（也不大会用官方这个东西，还要绑定域名才能使用，绑定域名就要备案 - - ，干脆不折腾了），反正我最后就是这样处理的。<br />
-然后先处理canvas的东东了，一开始只是尝试在上面draw出多个image object都出问题，大概是跟图片的加载顺序/速度有关。最后在StackOverflow解决（最近好多好多问题都是靠SO，终于明白它有多好了，自己也开始尝试在上面回答问题了 ^ ^），然后发现图片尺寸和预期的差很多，扭曲严重。搞了很久才知道设置canvas长宽时有问题，应该这样子：<br />
-<code>context.canvas.width = 1000;
-canvas.width = 1000;    // 不能这样</code><br />
-具体原因SO也有解释，不过看不大明白。。于是终于可以draw多图了，又去后台设置了下，把登录用户近期的评论对象（处理json数据挺麻烦的，因为有的是直接评论有的是回复评论什么的）的头像url 以字符串形式传到前端。然后按照早就设想好的，要把这些头像摆成一个圆。这点一开始真不知道怎么做，还以为要回到高中解析几何的时代去算一堆坐标 = = 后来忘记在哪里看到的一段js代码，可以让指定文字时刻围绕着鼠标指针成一个圆形。于是分析了那段代码，把文字排列成圆形的重点分离出来，再应用到自己代码上去，头像就这样排好了。老实说这个过程没那么顺利，中间有好多要微调的东西，比如半径，中心点坐标等等。<br />
-<img alt="环形头像" src="{{" title="root_url }}/images/articles/gravatars-around.png" /><br />
+然后先处理canvas的东东了，一开始只是尝试在上面draw出多个image object都出问题，大概是跟图片的加载顺序/速度有关。最后在StackOverflow解决（最近好多好多问题都是靠SO，终于明白它有多好了，自己也开始尝试在上面回答问题了 ^ ^），然后发现图片尺寸和预期的差很多，扭曲严重。搞了很久才知道设置canvas长宽时有问题，应该这样子：  </p>
+<pre><code>context.canvas.width = 1000;
+canvas.width = 1000;    // 不能这样
+</code></pre>
+<p>具体原因SO也有解释，不过看不大明白。。于是终于可以draw多图了，又去后台设置了下，把登录用户近期的评论对象（处理json数据挺麻烦的，因为有的是直接评论有的是回复评论什么的）的头像url 以字符串形式传到前端。然后按照早就设想好的，要把这些头像摆成一个圆。这点一开始真不知道怎么做，还以为要回到高中解析几何的时代去算一堆坐标 = = 后来忘记在哪里看到的一段js代码，可以让指定文字时刻围绕着鼠标指针成一个圆形。于是分析了那段代码，把文字排列成圆形的重点分离出来，再应用到自己代码上去，头像就这样排好了。老实说这个过程没那么顺利，中间有好多要微调的东西，比如半径，中心点坐标等等。<br />
+<img src='http://img3.tuchuang.org/uploads/2014/01/gravatars-around.png' width='700px;'><br />
 然后当晚一鼓作气，设置了<code>setInterval()</code>函数，每隔一定的很短的时间，每个image就随机地微微变一下自己的坐标，而指定的图片就按一定比例往中心靠近。在靠近这个过程上我以为我还是不可避免要使用坐标计算了，后来发现直接使用三角函数让它的横纵坐标变化就可以了 ^ ^ 。 不过同样没有那么顺利，太久没玩数学了<code>sin</code>，<code>cos</code>一开始居然在逻辑上都会搞错 -。- <br />
-<img alt="会动的头像" src="{{" title="root_url }}/images/articles/gravatars-move.png" /><br />
+<img src='http://img2.picbed.org/uploads/2014/01/gravatars-move.png' width='700px;'><br />
 后来在<a href="http://tutorials.jenkov.com/html5-canvas/animation.html">这个</a>教程上学到了<code>animate</code>函数，而且能成功替代<code>setInterval</code>，结果上看貌似动起来也比后者光滑，但我纠结很久还是使用了<code>setInterval</code>，因为<code>animate</code>貌似很难设置速度，有点偏快了。<br />
 然后又在每个图像外部添加了circle，本来希望圆形比头像小的，然后圆以外的图像部分不显示出来。但这点死活没成功，所以放弃了。。一大遗憾。最后再加上连线和颜色就基本完成了。<br />
-<img alt="成品" src="{{" title="root_url }}/images/articles/gravatars-final.png" /><br />
+<img src='http://img4.tuchuang.org/uploads/2014/01/gravatars-final.png' width='700px;'><br />
 这次算是从0基础的canvas开始，有个idea，逐步google写出来的。虽然有很多不足，但个人已经很满意了。<code>HTML5 + js</code> 确实是好东西啊～希望接下来能试试<code>three.js</code>，嘿嘿。<br />
 然后这个应用前两天很顺利通过了新浪的审核，所以就上线了～～ 真心求测试啊，地址在<a href="http://vrelations.sinaapp.com">这里</a> 。<br />
 代码可以在<a href="https://github.com/yakiang/Visual-weibo-relations">Github</a> 找到 ：）</p>

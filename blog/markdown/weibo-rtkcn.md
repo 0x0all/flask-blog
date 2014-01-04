@@ -9,7 +9,7 @@ title:weibo-rtkcn
 <!--more-->
 由于有过新浪微博，人人，网易微博等等的Oauth开发经验，本以为Twitter也不难搞定，太天真了。一进去看到那么多文档有点懵，又是`Oauth1`又是`Oauth1.1`又是`Steam Api`又是`REST Api`的，不知道区别和哪个是我要的。后来在REST首页看到我要的接口 [get/statuses/user_timeline](https://dev.twitter.com/docs/api/1.1/get/statuses/user_timeline) ，我要的只是获取 @RTKcn 的推文而已，所以这一个接口就够了，其他的就不去看了。  
 然后是申请应用，申请完是很折腾的一个钟。一开始我直接访问`https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=RTKcn`，215错误，看来要授权。然后研究怎么获取`Token`，后来发现在应用页面就可以直接获取了。然后自己写个Python脚本，还是访问上面这个页面，但是在`headers`里加入了token等信息。结果还是`400 Bad Request`，有点不知道怎么搞了。Google之，才发现[Twitter](https://dev.twitter.com/docs/twitter-libraries) 上自己就推荐了很多SDK，而且Python类的SDK很多，于是接下来很长时间我在尝试各种sdk，都是先访问`Github`主页看`README`，感觉不过时再按它的教程来搞。先后安装并尝试了`python-twitter`,`tweepy`,`TwitterAPI`等几个SDK，但都有这样那样的问题，它们不是在授权时有问题，就是在`status_update`也就是发新推文时出错。最后一个尝试了`Twython`，同样发推有问题。那时好烦就去洗澡了，洗完继续搞时忘了在哪里看到Application有`只读`和`可写`的区别。我这才想起来自己应用上面写的`Read-only`是什么意思。它的只读决定了它只能`GET`，不能`POST`，大概就是这么个意思。所以发推会失败，但没关系。我只是要`GET`推文而已。  
-![Read-only Application]({{ root_url }}/images/articles/readonly-application.png)  
+![Read-only Application](http://img2.picbed.org/uploads/2014/01/readonly-application.png)  
 于是继续使用`Twython`这个sdk，`GET @RTKcn` 的推文果然成功了！至此`twitter`端基本搞定，剩下的只是分析下`json`获取推文内容了。  
   
 至于微博那边就很简单了，自己已经写过好几个这种使用`未通过审核应用`发微博的机器人了 :P 。  

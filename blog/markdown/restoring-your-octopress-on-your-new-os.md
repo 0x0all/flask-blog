@@ -22,43 +22,43 @@ Google无解，便下了4.3G大的硬盘版fedora（上交的镜像站对中大�
 这次有了上次的经验就容易多了。下面直接记下从全新系统开始，恢复博客的过程：  
   
 首先，安装git相关工具：
-```
-sudo apt-get install git, git-core
-```
+
+    sudo apt-get install git, git-core
+
 安装ruby 和 rvm 等, 参考了<a href="http://www.verydemo.com/demo_c167_i2736.html" target="_blank">这里</a>
-```
-sudo apt-get install curl
-curl -L get.rvm.io | bash -s stable  # 安装rvm
-source ~/.rvm/scripts/rvm
-rvm requirements    # 这一步安装rvm所依赖的一些包
-rvm install ruby-1.9.3   # 安装ruby
-rvm use 1.9.3
-gem update
-sudo apt-get install ruby-dev-tools  # 这一步也是必须的，否则后面bundle install 要出错
-```
+
+    sudo apt-get install curl
+    curl -L get.rvm.io | bash -s stable  # 安装rvm
+    source ~/.rvm/scripts/rvm
+    rvm requirements    # 这一步安装rvm所依赖的一些包
+    rvm install ruby-1.9.3   # 安装ruby
+    rvm use 1.9.3
+    gem update
+    sudo apt-get install ruby-dev-tools  # 这一步也是必须的，否则后面bundle install 要出错
+
 然后配置git和github账户：
-```
-cd ~/.ssh
-sh-keygen -t rsa -C "your@email.com"    # 然后基本都是直接回车
-```
+
+    cd ~/.ssh
+    sh-keygen -t rsa -C "your@email.com"    # 然后基本都是直接回车
+
 然后打开.ssh里面一个.pub文件，把里面所有内容复制后去<a href="https://github.com/settings/ssh" target="_blank">这里</a>配置SSH key。  
 然后，开始恢复你的blog：
-```
-git clone -b source git@github.com:username/username.github.com.git octopress  # 这里要填上你的blog那个repo的地址
-cd octopress   # 这时弹出rvm相关信息，写yes
-git clone -b master git@github.com:username/username.github.com.git _deploy
-gem install bundler
-bundle install
-```
+
+    git clone -b source git@github.com:username/username.github.com.git octopress  # 这里要填上你的blog那个repo的地址
+    cd octopress   # 这时弹出rvm相关信息，写yes
+    git clone -b master git@github.com:username/username.github.com.git _deploy
+    gem install bundler
+    bundle install
+
 这时候如果没报错就已经恢复好了。但实际上却有点不一样，我不知道是不是只有我才会，这时候我的source里面那些文章和 _include/custom/asides等文件夹里该有的东西都没有。  
 也就是说如果你rake generate && rake deploy 那你的博客可能会什么都不剩，不仅是文章，连辛苦配置的侧边栏等等东西都没有了！我也不知道为什么github上的东西没有保持最新。可能又是我对github和rake不了解吧。  
 还好我把之前系统的博客文件夹整个留下来了，这时我就把新恢复的整个文件夹都删了（不是整个rm -rf，而是打开文件夹把里面可见的东西删了，不包括隐藏文件！），然后把之前备份的文件夹里面可见的目录和文件都拷贝到新的那个文件夹里面。  
 可能会出一些意外情况比如找不到某css文件神码的，这时自己看情况调整下啦。  
 然后
-```
-rake generate
-rake deploy
-```
+
+    rake generate
+    rake deploy
+
 再去看，博客基本就成功迁移到你的新系统里啦。  
 
 ####最后

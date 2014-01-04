@@ -59,7 +59,7 @@ a:hover {
 }
 
 #article img {
-    padding-left: 30%;
+    padding-left: 20%;
 }
 
 #footer {
@@ -99,14 +99,13 @@ a:hover {
     font-size: 24px;
 }
 
-code {
-}
-
 pre,code{
     background-color: #e3debb;
     padding-left: 6px;
     padding-right: 6px;
     width: 100%;
+    font-size:18px;
+    overflow: auto;
 }
 
 ul, ol {
