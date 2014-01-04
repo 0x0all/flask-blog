@@ -1,0 +1,16 @@
+#container {
+    text-align:center; 
+    width:90%; 
+    margin-left:10%; 
+}
+
+img {
+    float:left; 
+    margin:30px; 
+    cursor:progress;  
+}
+
+h3 {
+    color:red; 
+    text-align:center; 
+}
