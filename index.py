@@ -1,3 +1,3 @@
 from blog import blog
 
-blog.run(debug=False)
+blog.run(debug=True)

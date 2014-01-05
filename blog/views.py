@@ -67,6 +67,13 @@ def robots():
     return render_template('pages/robots.txt')
 
 
+@blog.route('/atom.xml')
+def Atom():
+    c = getDB()
+    posts = c.execute("SELECT * FROM posts ORDER BY date DESC LIMIT 10").fetchall()
+    return render_template('pages/atom.xml', articles=posts)
+
+
 @blog.errorhandler(404)
 def Error404(e):
     return render_template('pages/404.html')
