@@ -28,13 +28,13 @@
 <li>判断方块是否撞柱；如果是则粉碎方块并重头开始</li>
 </ul>
 <p>所以一个看起来简单的小游戏细分开来是有好多内容而且一点也不容易的，我也是做下去才慢慢觉得的。<br />
-第1步很简单。第2步实现前就先要决定好canvas某一点的坐标如何定位。花了挺久才让它run起来。然后方块的翻转总是实现不了，StackOverflow上关于<code>canvas rotate</code>问题很多，但一直不知道怎么apply到自己的代码里去。后来看了一篇国外博客才成功。但是虽然能翻转了，却发现自己的翻转180度好难看。。一点也不协调和连续，到达顶点也没有一个减速为0的过程（这一步确实一开始没考虑到，后来和flash版作比较才发现的）。然后这一点让我没什么信心或者说动力做下去了。想到在方块翻转的情况下去判断它是否撞柱了我就觉得痛苦。所以最终它暂时止步这里，demo<a href="http://yakiang.com/projects/js-toys/space-is-key">在这</a>，求鄙视。<br />
+第1步很简单。第2步实现前就先要决定好canvas某一点的坐标如何定位。花了挺久才让它run起来。然后方块的翻转总是实现不了，StackOverflow上关于<code>canvas rotate</code>问题很多，但一直不知道怎么apply到自己的代码里去。后来看了一篇国外博客才成功。但是虽然能翻转了，却发现自己的翻转180度好难看。。一点也不协调和连续，到达顶点也没有一个减速为0的过程（这一步确实一开始没考虑到，后来和flash版作比较才发现的）。然后这一点让我没什么信心或者说动力做下去了。想到在方块翻转的情况下去判断它是否撞柱了我就觉得痛苦。所以最终它暂时止步这里，demo<a href="/projects/js-toys/space-is-key">在这</a>，求鄙视。<br />
 与此同时我发现了另一个人做了同一个东西，也是canvas版，它只是个<a href="http://jsrun.it/ladeng6666/gn0D">demo</a>，不是完整的游戏。但却比我的流畅协调和顺滑多了。同时也有<a href="http://bbs.9ria.com/thread-128498-1-1.html">源代码</a>，分析了下好像run的原理跟我就不一样了。或许这就是差距吧。。如果未来某天想继续实现，应该要借鉴他的代码了～ T_T  </p>
 <h3>sing-the-pics</h3>
 <p>很早前就想过将图片的数据提取出来再以声音方式播放出来。但之前遇到最大问题是怎么在浏览器单独播放音符，而不是借助于audio文件。google了很久发现有一些第三方js库可以实现，当我搜到<a href="https://github.com/automata/Audiolet">audiolet</a>这个库并发现了<a href="http://automata.cc/lab/hear-the-img">这个页面</a>时心都凉了-。- 因为作者用自己写的这个库已经实现了。这是最能打击我的情况之一了。然后发现这个库好难用，个人觉得文档不全，看不明白怎么用。以上种种我也就放弃了。<br />
 后来看到了justjavac在segmentfault的<a href="http://blog.segmentfault.com/justjavac/1190000000313116">这篇文章</a>，禁不住又想试试从canvas图片里提取数据做点什么了。于是又想到这个玩意，于是这次在更耐心的google下找到了<a href="http://patorjk.com/blog/2012/07/22/tone-playing-experiment-with-html5s-web-audio-api/">这篇文章</a>，很简要的介绍了浏览器新 audio API 的用法，很快就实现了play音符的功能。于是基本问题解决了就开始做了。<br />
 没有打算用什么牛逼的算法决定哪个数据映射到哪个高度的哪个音符。我和高中一个音乐方面有研究的同学详细聊之后才稍微有一点音符音高那些知识，彻底的音乐白痴啊= = 然后用一个很随意的数字运算方法将提取到的像素数据转化为 audio API 可接受的数字，然后就play了。<br />
-结果不出意料，听到的声音毫无规律而且很难入耳-。- 想试试的童鞋移步<a href="http://yakiang.com/projects/js-toys/sing-the-pics/">这里</a>。代码在<a href="https://github.com/yakiang/some-collections/tree/master/js-toys/sing-the-pics">这儿</a>。  </p>
+结果不出意料，听到的声音毫无规律而且很难入耳-。- 想试试的童鞋移步<a href="/projects/js-toys/sing-the-pics/">这里</a>。代码在<a href="https://github.com/yakiang/some-collections/tree/master/js-toys/sing-the-pics">这儿</a>。  </p>
 <h3>excel.vim</h3>
 <p>最近对office的抵触又莫名加深了几分，看到<code>*.doc*</code>,<code>*.xls*</code>的文件格式名就不爽。以前会觉得libreoffice还是不能和微软office比的。后来看了对它们团队的专访才领悟，微软office不是标准，<code>odf</code>文件才是标准，一切文档多应该按这个标准来。而不是什么文档都是<code>.doc*</code>，所以libre不需要兼容微软。只要微软也支持odf格式并且所有人都使用odf，那世界才和谐。最讨厌那些群共享文件都用doc的了。尽管如此，对于文档我还是最支持pdf，这也是我会花几天时间去学LaTeX的原因。<br />
 然后对于excel文件，有一天想到其实里面只是一行行的文字而已。把它依次显示在vim中也是有可能的。于是google下发现了几个可以<a href="http://www.python-excel.org">操作excel文件的python库</a>，最终选的是<a href="https://github.com/python-excel/xlrd">xlrd</a>。由于有使用python开发vim插件的经验所以这个excel.vim也很快写出来。<br />
