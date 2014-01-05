@@ -2,7 +2,7 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    background-color: #f3f2f0;
+    background-color: #ffffff; /* #f3f2f0 */
     font-family: 'Overlock', cursive;
 }
 
