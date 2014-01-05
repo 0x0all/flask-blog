@@ -62,6 +62,11 @@ def resume():
     return render_template('pages/resume/index.html')
 
 
+@blog.route('/robots.txt')
+def robots():
+    return render_template('pages/robots.txt')
+
+
 @blog.errorhandler(404)
 def Error404(e):
     return render_template('pages/404.html')
