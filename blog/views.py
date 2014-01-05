@@ -60,3 +60,8 @@ def projects(path):
 @blog.route('/resume/')
 def resume():
     return render_template('pages/resume/index.html')
+
+
+@blog.errorhandler(404)
+def Error404(e):
+    return render_template('pages/404.html')
