@@ -1,0 +1,113 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #ffffff; /* #f3f2f0 */
+    font-family: 'Overlock', cursive;
+}
+
+a {
+    text-decoration: none;
+    color: #f5725d;
+}
+
+a:hover {
+    color: #348fd4;
+}
+
+#container {
+    min-height: 100%;
+    position: relative;
+    padding-left: 15%;
+    padding-right: 16%;
+}
+
+#header {
+    padding-top: 40px;
+    margin-bottom: 100px;
+}
+
+#links {
+    padding-top: 30px;
+    font-size: 24px;
+}
+
+#pages {
+    float: left;
+}
+
+#pages a{
+    color: #857e6b;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+#pages a:hover {
+    color: #348fd4;
+}
+
+#mysns {
+    padding-right: 25%;
+    float: right;
+}
+
+#article {
+    padding-bottom: 40px;   /* Height of the footer */
+    font-size: 22px;
+    line-height: 40px;
+    padding-left: 10%;
+}
+
+#article img {
+    padding-left: 20%;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    right: 20%;
+    height: 40px;           /* Height of the footer */
+    font-size: 15px;
+}
+
+.copyright {
+    padding-left: 30px;
+}
+
+#articlelist {
+    padding-left: 10%;
+    line-height: 30px;
+}
+
+#articlelist .p {
+    padding-bottom: 20px;
+}
+
+#articlelist .aldate {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6d768d;
+}
+
+.altitle, .preview, .readmore{
+    padding-left: 6%;
+}
+
+#more {
+    margin:7%;
+    margin-left:40%; 
+    font-size: 24px;
+}
+
+pre,code{
+    background-color: #e3debb;
+    padding-left: 6px;
+    padding-right: 6px;
+    width: 100%;
+    font-size:18px;
+    overflow: auto;
+}
+
+ul, ol {
+    background-color: #f4ffdd;
+}

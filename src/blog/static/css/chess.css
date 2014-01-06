@@ -1,0 +1,20 @@
+body{
+    background-color:brown;
+    margin-left:400px;
+    margin-top:100px;
+
+}
+
+.square{
+    border-color:orange;
+    margin:-6px;
+    width:60px;
+    height:60px;
+}
+
+h3{
+    color:yellow;
+}
+
+
+

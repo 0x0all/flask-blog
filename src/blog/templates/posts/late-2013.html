@@ -1,0 +1,41 @@
+{% extends "article.html" %}
+{% block article %}
+<h1>Late 2013</h1>
+<p>2013最后一天。 虽然每周都感觉过得很快，但每个月都能发生好多事请。  </p>
+<p>月初开始搞计算机网络课程设计，其实就是小组做一个又CS又P2P通信的小程序。小组讨论后让我和另一个做客户端，他们服务端使用java，但出于对java的反感以及曾经的VC经验我决定使用Qt 来写客户端。因为我觉得二者应该是独立的，通信协议已经确定，使用的语言不会相互影响。后来发现naive了。<br />
+在收发数据上就出现了问题，不知道服务器是怎么读的，我使用<code>QTcpSocket</code>自带的函数来发和读结果都和服务器对不上，后来两端都各自调整一下：服务端修改读取数据的方式，客户端要判断数据是否读满才行。因为客户端收到的数据貌似是分块的，一次来一点，需要判断什么时候完整了才行。这也是在StackOverflow提问才明白的，毕竟之前写Qt 没有接触过网络编程的。话说觉得Qt 这个信号与槽的机制与node.js的事件驱动还是蛮像的，没有阻塞性，所以客户端要实现十秒一次的心跳信息时我也不需要劳神去处理多线程之类的任务，直接开一个<code>QTimer</code>倒计时就好了，时间到了自己会执行。<br />
+<!--more-->
+此外还有P2P，一开始想着估计强大的Qt 库也有个类似<code>QP2P</code> 之类的东西，后来发现没有，google才想起来，p2p要自己在两个客户端聊天时既当Client又当Server - -  这时又要用到<code>QTcpServer</code>，好在最终顺利解决。其实其中java和C++之间通信的坑要多得多。  </p>
+<hr />
+<p>然后人工智能（AI）project更坑，基于维基或百度百科的词条内容。其实小组连做什么都一直不确定，然后就说先爬一些词条下来再说 - - 我说做个地点搜索的东西，通过一两个关键词找地点，比如通过“樱花”和“地震”最终定位“日本”。听起来似乎还不错，但我对于怎么找还没有具体的想法，对于关键词和地点之间的关系如何存储还没有想。于是先爬内容，有一个现成的<a href="https://github.com/goldsmith/Wikipedia/">wikipedia python API</a> ，相当方便，支持中文和词条链接。中文分词方面有开源的<a href="https://github.com/fxsjy/jieba">结巴分词</a>，支持词性分词，所以找地点名词的工作也省了。<br />
+然后一开始就直接使用正则来匹配关键词和地点名词直接的关系 - - 我得说最近觉得写正则感觉很爽，不论是python，js 还是vim中～为此我还特意又入了一个正则杯 =。= <br />
+<img src='http://img4.tuchuang.org/uploads/2013/12/1388498004.jpg' alt='recup' style='width:400px;' /><br />
+然后一边使用azure的服务器爬了几天几夜一共9万多个词条 - - （<code>supervisor</code>）是个好东西。结果确实还不错，但后来讨论发现没什么人工智能的算法，按老师后来的话说，“人肉智能”。于是又临时硬性加入一些算法，什么pagerank， TF-IDF = = 为了presentation好看点我又结合Tornado和Google地图做了个前端。结果被贱人老师五分钟否决，呵呵。对这种人没啥好评论的，评教时给了个呵呵。总之自己学到了东西就好。<br />
+<img alt="aimap" src="http://img2.picbed.org/uploads/2013/12/2013-12-31 22:08:33的屏幕截图.png" /><br />
+这次AI 还让我无聊时写了个<a href="https://github.com/yakiang/baidubaike">百度百科的 python wrapper</a>（如果称不上API 的话），受那个wikipedia API 的启发，google没发现百度百科有类似的东西，于是自己也使用<code>beautifulsoup4</code>写了一个。其实不难，真的只是一层封装（虽然 bs 会莫名奇妙去掉一些html）。不过这是我第一次写“工具类”，之前都是用别人的工具写应用，第一次也自己写个工具感觉还是不错的。在vps和实验室的XP用pip安装成功的赶脚太爽了。<br />
+然后这次经历主要是让我熟悉一个 Python module 应该如何写，如何上传。之前没研究过如何 raise custom Exception ，以及<code>__init.py__</code>有什么用等，大都参考了那个wikipedia。至于上传到Pypi，找过几份教程都有点乱，最后找到<a href="http://www.diveinto.org/python3/packaging.html">dive into python</a>的一篇文章，虽然是很长的英文，但很容易懂而且十分有用！吃惊的是刚一上传上去几分钟内就有好几百下载，吓死我了。因为我还只是传了一个beta版。估计pypi官网平时都有很多人上，有些看到新的包就都下载了吧 = = 至于文档，<a href="http://readthedocs.org">readthedocs</a>是个好地方，只要把源文件放到github就会自动同步生成文档，不过需要对<code>reStructuredText</code>语法有所了解。听说还有人直接在上面开静态博客 - -  </p>
+<hr />
+<p>然后还折腾了下node.js 。其实接触node.js已经很久了，之前一直在看这个<a href="http://nodebeginner.org/index-zh-cn.html">简单中文教程</a>（貌似官方的？），但好多次打开都没有真正看完。后来干脆不看了，直接搜express+socket.io的教程，因为一直久仰socket.io大名。结果发现网上好多教程大都outdated 了，express更新蛮快的，而<a href="https://github.com/learnboost/socket.io">socket.io</a>居然一年来没有任何commit - - （找教程时是这样，但写这篇文章时发现居然在几天前有更新了）。最后找到一个即时聊天室的<a href="https://github.com/DonaldDerek/Chat-Node">demo</a>，这样算入门了吧 - -  <br />
+另外很久前就发现了<a href="http://tweereal.com">tweereal</a>这个网站，当时就觉得炫酷，也正是它让我对socket.io十分向往。于是也想跟它一样做个什么real time的东西出来，充分发挥node.js+socket.io的特性。去研究过新浪微博，开发文档没有twitter那种 stream API，也不提供关键词搜索的API ，于是自己去 http://s.weibo.com 直接搜索“我在这里”然后用node来爬 - - 一开始以为需要登录获取cookie所以还用了下<a href="https://github.com/youyudehexie/sinalogin"><code>sinalogin</code></a>这个包，作者通过模拟新浪微博登录时各种加密过程实现的模拟登录。在上面遇到不少坑，过两天发现其实微博搜索可以不需要登录的= = 于是大大简化开发流程，接着去研究了下Google地图的API 。一直觉得Google的开发文档很全但有些过了，比如想找一个功能的文档结果里面有好多链接搞得很乱，有时候那么多链接都找不到你要的。考虑到微博几乎都是在国内发的，我便转而去看了下百度地图。结果很快就搞了起来 - - ，放一些 layer 什么的。<br />
+<img src='http://img1.tuchuang.org/uploads/2014/01/3305642126590079589.png' alt='realtimewb' style='width:400px;'><br />
+基本功能都搞差不多后果然遇到预料中的问题，没有stream API 意味着需要频繁抓取那个搜索页面，于是乎万恶的验证码来了。。
+<img alt="pincode" src="http://s.weibo.com/ajax/pincode/pin?type=sass&amp;ts=1387386423" /><br />
+我决定把它放到地图旁边，让访问者帮我输入验证码（虽然还是几分钟就要输一次），但还是不顺利。通过抓包看在提交验证码时会发送什么数据后，在本地模拟了一遍，结果都失败了。不知为何，用各种方式模拟提交都失败了。。所以使用新浪微博这想法也告吹了。超不甘心，虽然明知即使成功效果也是不好的，什么时候渣浪能学一下twitter开放多点接口而不是有的接口长期不开有的接口需要高级权限。<br />
+于是乎我怎么可能就这样停下来，渣浪不行就换个地儿吧，google了下发现没什么大网站提供stream API了，连脸书都没有。所以我直接去看StackOverflow的了，因为之前研究过它的API 觉得写的很清晰，rate limit 也很高一秒钟可以几十次调用虽然它的缓存很严重。一开始纠结很多问题，比如选择问题还是选择答案，几分钟更新一次，layer 是出现几秒就消失还是长时间停留，选择什么 geocode API 。最后那个确实搜过好多类似的，Google的Geocode接口有调用限制而且挺严重的，还不支持 batch geocode（多个地址）。我能找到的替代品大都不理想，或者不支持http 调用或者本身不准。于是乎还是将就用google的。 
+最后顺利搞出来，虽然比tweereal差远了 : http://wherebo.ga 。<br />
+<img src='http://img4.tuchuang.org/uploads/2013/12/2013-12-30 16:05:22的屏幕截图.png' alt='realtimewb' style='width:400px;'><br />
+写Node.js确实很不习惯，各种 <code>, function (err, argument) {}</code> ，当然我对它也不熟，<code>exports</code>时和继承<code>EventEmitter</code>时大都得靠StackOverflow。还有CouchDB是第一次用，它的web后台管理不错，作轻量级数据库很赞。  </p>
+<hr />
+<p>2013相当充实，去年12月1日开始接触Linux，才有这一年的收获。最初在Sicily和<a href="https://projecteuler.net">ProjectEuler</a>写一些简单的代码，这个经历很重要，让我熟悉gdb的同时对vim也开始熟练起来，那是我第一次发现写代码是种享受。二月开始学习python，现在想想真是超重要的决定。虽然还早，但现在就可以断言Linux+Vim+Python会是影响一生的选择。在此基础上这一年东碰西沾各方面都学了一点点，但真正精的不多，2014希望学到更多吧。暂时想到的有：</p>
+<ul>
+<li>deep js</li>
+<li>more Python</li>
+<li>some shell</li>
+<li>和 iGem 团队努力完成产品</li>
+<li>看完《黑客与画家》（目前进度是前两章 - - ）</li>
+<li>熟练操作某个数据库吧。</li>
+<li>希望有 rMBA，这是最想入的设备 ^ ^  （机械键盘 SSD什么的再说 -。- ）  </li>
+</ul>
+<p>话说寒假首要目标是把博客切换到 <a href="https://github.com/getpelican/pelican">pelican</a> 。  </p>
+<p><strong>Happy New Year !!</strong></p>
+{% endblock %}

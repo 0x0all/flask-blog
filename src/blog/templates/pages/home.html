@@ -1,0 +1,22 @@
+{% extends "articlelist.html" %}
+
+{% block articlelist %}
+{% autoescape false %}
+    {% for post in articles %}
+        <hr color="silver">
+        <div class="p">
+            <span class="aldate">{{post[0]}}</span><br/>
+            <div class="preview">
+                <p>{{post[3]}}</p>
+            </div>
+            <a class="readmore" href="/blog/{{post[1]}}">read more</a>
+        </div>
+    {% endfor %}
+{% endautoescape %}
+<div id='more'>
+    <a href='/archives'>
+        <span>··· More ···</span>
+    </a>
+</div>
+{% endblock %}
+

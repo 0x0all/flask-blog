@@ -1,0 +1,5 @@
+User-agent: * <br>
+
+Disallow: / <br>
+Allow: /blog/templates/pages/ <br>
+Allow: /blog/templates/posts/ <br>
