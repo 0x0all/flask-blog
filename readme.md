@@ -10,52 +10,35 @@ I did plan to make it static at first, but abandon it when it generated the ugly
 ##File Tree
 
 
-|--- conf            _configure files of Nginx and uwsgi_      
+|--- conf            .....  __configure files of Nginx and uwsgi__      
 |   |--- nginx.conf     
 |   |--- uwsgi.ini      
-|     
-|--- db              _sqlite database_     
+|--- db              .....  __sqlite database__     
 |   └--- posts.db      
-|     
-|--- logs            _log directory_      
-|     
+|--- logs            .....  __log directory__      
 |--- readme.md      
-|     
-|--- src             _python source files_  
+|--- src             .....  __python source files__  
     |--- blog      
-    |   |--- config.py           _blog configs_      
-    |   |     
-    |   |--- deletepost.py       _for delete posts_  
-    |   |     
+    |   |--- config.py           .....  __blog configs__      
+    |   |--- deletepost.py       .....  __for delete posts__  
     |   |--- __init__.py      
-    |   |     
-    |   |--- markdown            _markdown files directory_  
+    |   |--- markdown            .....  __markdown files directory__  
     |   |   |---   
-    |   |     
-    |   |--- md2html.py          _for converting markdown to html file_  
-    |   |     
-    |   |--- newpost.py          _for creating new post_  
-    |   |     
+    |   |--- md2html.py          .....  __for converting markdown to html file__  
+    |   |--- newpost.py          .....  __for creating new post__  
     |   |--- static      
-    |   |   |     
     |   |   |--- css      
     |   |   |   |--- main.css      
-    |   |   |     
-    |   |   |--- files           _static files directory_  
+    |   |   |--- files           .....  __static files directory__  
     |   |   |   |---   
-    |   |   |     
     |   |   |--- images      
     |   |   |   |--- favicon.png      
-    |   |   |     
     |   |   |--- js      
     |   |       └---   
-    |   |     
     |   |--- templates      
-    |   |   |       
-    |   |   |--- base.html       _basic templates_  
+    |   |   |--- base.html       .....  __basic templates__  
     |   |   |--- post.html      
     |   |   |--- postlist.html      
-    |   |   |     
     |   |   |--- pages      
     |   |   |   |--- 404.html      
     |   |   |   |--- about      
@@ -69,12 +52,9 @@ I did plan to make it static at first, but abandon it when it generated the ugly
     |   |   |   |   |--- index.html      
     |   |   |   |--- robots.txt      
     |   |   |   |--- tags.html      
-    |   |   |     
     |   |   |--- posts      
-    |   |       |---             _articles (html)_  
-    |   |         
-    |   |--- views.py            _flask views_  
-    |     
+    |   |       |---             .....  __articles (html)__  
+    |   |--- views.py            .....  __flask views__  
     |--- index.wsgi      
   
   
