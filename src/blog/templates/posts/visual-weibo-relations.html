@@ -1,10 +1,10 @@
-{% extends "article.html" %}
-{% block article %}
+{% extends "post.html" %}
+{% block post %}
 <h1>可视化微博关系</h1>
 <p>之前一直想用<code>three.js</code>做个什么东西，稍稍看了点教程发现js基础还不行 - - 于是想还是从<code>canvas</code>开始学吧。于是在<a href="http://www.html5canvastutorials.com">这个网站</a>看简单的教程（不过国内访问真心慢），看了两三天就想动手干了，因为知道自己要做什么，就是将微博上的好友关系可视化一下，还要让它动起来。<br />
 后端的话就使用<code>Tornado</code>，一直想在SAE上试试<code>tornado</code>，<a href="http://gettingstarted.sinaapp.com/introduction.html">这儿</a>的教程还不错。主要是第一次在SAE使用上<code>mysql</code>，没有里面的代码示例还真不知道怎么开始。<br />
 <!--more-->
-<code>canvas</code>动画的话网上很多，我当时借鉴了<a href="http://spielzeugz.de/html5/liquid-particles.html">这个</a>，当时真的很意外，原来能做到这么流畅。后来我也确实看它的源码学到了不少～<br />
+<code>canvas</code>动画的话网上很多，我当时借鉴了<a href="http://spielzeugz.de/html5/liquid-pposts.html">这个</a>，当时真的很意外，原来能做到这么流畅。后来我也确实看它的源码学到了不少～<br />
 一开始是处理微博授权问题，之前一直不明白为什么有的第三方网页应用可以在登录授权后立马进去应用页面了。一般来说，授权后是获得含有<code>code</code>的链接，通过这个<code>code</code>才能获取<code>access token</code>，然而刚刚说的情况看起来就好像跳过了输入“<code>code</code>获取<code>token</code>”的过程。后来通过<code>firebug</code>去抓其中一个应用来看，才发现在登录后有个重定向的过程。具体没有细看，但我已经大致知道怎么做了：将授权回调地址改为其中一个子页面，再在后台专门对这个页面进行处理，比如获取<code>url</code>中的<code>code</code>，再换取<code>token</code>，若成功再重定向到应用页面。至于那些使用官方<code>jssdk</code>的是不是这样我不知道（也不大会用官方这个东西，还要绑定域名才能使用，绑定域名就要备案 - - ，干脆不折腾了），反正我最后就是这样处理的。<br />
 然后先处理canvas的东东了，一开始只是尝试在上面draw出多个image object都出问题，大概是跟图片的加载顺序/速度有关。最后在StackOverflow解决（最近好多好多问题都是靠SO，终于明白它有多好了，自己也开始尝试在上面回答问题了 ^ ^），然后发现图片尺寸和预期的差很多，扭曲严重。搞了很久才知道设置canvas长宽时有问题，应该这样子：  </p>
 <pre><code>context.canvas.width = 1000;

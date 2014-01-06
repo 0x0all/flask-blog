@@ -25,7 +25,7 @@ def markdownToHtml(mdfile):
 
     html = markdown.markdown(content).encode('utf-8')
     with open('templates/posts/{}.html'.format(info['title']), 'w') as f:
-        f.write('\n'.join(['{% extends "article.html" %}', '{% block article %}',
+        f.write('\n'.join(['{% extends "post.html" %}', '{% block post %}',
             html, '{% endblock %}']))
 
     preview = html.split(PREVIEW_MORE_SPLIT[:-1])[0].decode('utf-8')

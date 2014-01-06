@@ -1,8 +1,8 @@
-{% extends "articlelist.html" %}
+{% extends "postlist.html" %}
 
-{% block articlelist %}
+{% block postlist %}
 {% autoescape false %}
-    {% for post in articles %}
+    {% for post in posts %}
         <hr color="silver">
         <div class="p">
             <span class="aldate">{{post[0]}}</span><br/>

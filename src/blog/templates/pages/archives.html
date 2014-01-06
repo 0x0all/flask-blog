@@ -1,7 +1,7 @@
-{% extends "articlelist.html" %}
+{% extends "postlist.html" %}
 
-{% block articlelist %}
-    {% for post in articles %}
+{% block postlist %}
+    {% for post in posts %}
         <div class="p">
             <a href="/blog/{{post[1]}}">
                 <span class="aldate">{{post[0]}}</span><br>

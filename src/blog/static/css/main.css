@@ -51,14 +51,14 @@ a:hover {
     float: right;
 }
 
-#article {
+#post {
     padding-bottom: 40px;   /* Height of the footer */
     font-size: 22px;
     line-height: 40px;
     padding-left: 10%;
 }
 
-#article img {
+#post img {
     padding-left: 20%;
 }
 
@@ -74,16 +74,16 @@ a:hover {
     padding-left: 30px;
 }
 
-#articlelist {
+#postlist {
     padding-left: 10%;
     line-height: 30px;
 }
 
-#articlelist .p {
+#postlist .p {
     padding-bottom: 20px;
 }
 
-#articlelist .aldate {
+#postlist .aldate {
     font-size: 14px;
     font-weight: bold;
     color: #6d768d;

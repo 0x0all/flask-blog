@@ -16,14 +16,14 @@ def home():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
     num = PAGINATE if len(posts) > PAGINATE else len(posts)
-    return render_template('pages/home.html', articles=posts[:num])
+    return render_template('pages/home.html', posts=posts[:num])
 
 
 @blog.route('/archives')
 def archives():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
-    return render_template('pages/archives.html', articles=posts)
+    return render_template('pages/archives.html', posts=posts)
 
 
 @blog.route('/tags/<tag>')
@@ -33,7 +33,7 @@ def tags(tag):
         "SELECT * FROM posts WHERE tags like ? ORDER BYdate DESC",
         ('%,{}%'.format(tag),
          )).fetchall()
-    return render_template('pages/tags.html', articles=posts)
+    return render_template('pages/tags.html', posts=posts)
 
 
 @blog.route('/blog/<title>')
@@ -71,7 +71,7 @@ def robots():
 def Atom():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC LIMIT 10").fetchall()
-    return render_template('pages/atom.xml', articles=posts)
+    return render_template('pages/atom.xml', posts=posts)
 
 
 @blog.errorhandler(404)

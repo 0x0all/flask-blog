@@ -1,5 +1,5 @@
-{% extends "article.html" %}
-{% block article %}
+{% extends "post.html" %}
+{% block post %}
 <h1>微博版中文锐推客</h1>
 <p>作为程序员哪能不翻墙，翻墙哪能不上推。偶然看到twitter上<a href="https://twitter.com/RTKcn">@RTKcn</a> （昵称是“中文锐推客”）这个帐号，觉得很不错，它会自动获取twitter上转发最多的中文推再转推到自己帐号，介绍页面在<a href="http://rtbot.laobubu.net">这里</a> 。<br />
 然后它的推文质量确实挺高的，就不说那些不适宜在天朝出现的了，其他的大都很搞笑，而且目测微博上一些很火的段子原始出处也是twitter来的。然后我就曾想把它一些好的推文发到自己微博帐号上，于是曾经琢磨着写个Chrome插件，可以在twitter页面直接发到微博上去。暑假时钻研了许久，最后还是失败了。Sigh，插入自定义<code>css</code>和<code>js</code>到头部了但就是不按我要的方式来；<code>post</code>到一个页面里已有的隐藏<code>iframe</code>了（而且它本身发推的表单也是target到这个iframe）但就是post完要重定向。无奈作罢。。。<br />
