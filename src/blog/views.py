@@ -13,7 +13,6 @@ def getDB():
 @blog.route('/')
 @blog.route('/home')
 def home():
-    PAGINATE = PAGINATE
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
     num = PAGINATE if len(posts) > PAGINATE else len(posts)

@@ -35,8 +35,10 @@ if __name__ == '__main__':
         c = conn.cursor()
         newPost(title)
         exit(0)
+        
     except IndexError as e:
         print 'Please specific a title'
+
     except Exception as e:
         print e
         exit(-1)

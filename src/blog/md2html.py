@@ -13,36 +13,29 @@ info = {
         'tags': ','
     }
 
-def markdownToHtml():
-    try:
-        mdfilename = arguments[1].strip("'")
-        text = open(mdfilename, 'r').read().decode('utf-8')
-        postinfo, content = text.split(INFO_CONTENT_SPLIT)
-        infolist = postinfo.split('\n')
-        for i in infolist:
-            if not i: continue
-            k, v = i.split(':')
-            info[k] = v
-
-        html = markdown.markdown(content).encode('utf-8')
-        with open('templates/posts/{0}.html'.format(info['title']), 'w') as f:
-            f.write('{% extends "article.html" %}\n')
-            f.write('{% block article %}\n')
-            f.write(html)
-            f.write('\n{% endblock %}\n')
-
-        preview = html.split(PREVIEW_MORE_SPLIT[:-1])[0].decode('utf-8')
-        c.execute("INSERT OR REPLACE INTO posts VALUES (?, ?, ?, ?)", [info['date'],
-            info['title'], info['tags'], preview])
-        conn.commit()
-        conn.close()
-
-
-
-    except IndexError:
-        print "I don't know which markdown file to convert."
-        exit(-1)
+def markdownToHtml(mdfile):
+    text = open(mdfile, 'r').read().decode('utf-8')
+    postinfo, content = text.split(INFO_CONTENT_SPLIT)
+    infolist = postinfo.split('\n')
     
+    for i in infolist:
+        if not i: continue
+        k, v = i.split(':')
+        info[k] = v
+
+    html = markdown.markdown(content).encode('utf-8')
+    with open('templates/posts/{}.html'.format(info['title']), 'w') as f:
+        f.write('\n'.join(['{% extends "article.html" %}', '{% block article %}',
+            html, '{% endblock %}']))
+
+    preview = html.split(PREVIEW_MORE_SPLIT[:-1])[0].decode('utf-8')
+    c.execute("INSERT OR REPLACE INTO posts VALUES (?, ?, ?, ?)", [info['date'],
+        info['title'], info['tags'], preview])
+
+    conn.commit()
+    conn.close()
+
+
 
 
 if __name__ == '__main__':
