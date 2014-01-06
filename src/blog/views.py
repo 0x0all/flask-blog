@@ -1,18 +1,19 @@
 #-*-coding:utf-8-*-
 from flask import render_template, url_for
 from blog import blog
+from config import *
 import sqlite3
 
 
 def getDB():
-    conn = sqlite3.connect(blog.DBFILE)
+    conn = sqlite3.connect(DBFILE)
     return conn.cursor()
 
 
 @blog.route('/')
 @blog.route('/home')
 def home():
-    PAGINATE = blog.PAGINATE
+    PAGINATE = PAGINATE
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
     num = PAGINATE if len(posts) > PAGINATE else len(posts)

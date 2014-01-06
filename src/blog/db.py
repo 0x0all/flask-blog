@@ -1,9 +1,9 @@
 #!/usr/bin/python
 #-*-coding:utf-8-*-
 import sqlite3
-from blog import blog
+from config import *
 
-conn = sqlite3.connect(blog.DBFILE)
+conn = sqlite3.connect(DBFILE)
 c = conn.cursor()
 
 # c.execute('''CREATE TABLE posts
