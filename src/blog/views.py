@@ -67,11 +67,14 @@ def robots():
     return render_template('pages/robots.txt')
 
 
+from flask import make_response
 @blog.route('/atom.xml')
 def Atom():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC LIMIT 10").fetchall()
-    return render_template('pages/atom.xml', posts=posts)
+    response = make_response(render_template('pages/atom.xml', posts=posts))
+    response.headers['Content-Type'] = 'application/xml'
+    return response
 
 
 @blog.errorhandler(404)
