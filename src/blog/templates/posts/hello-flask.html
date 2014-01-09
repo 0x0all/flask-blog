@@ -1,0 +1,57 @@
+{% extends "post.html" %}
+{% block post %}
+<h1>Hello Flask</h1>
+<p>上篇post提到寒假第一件事就是把博客从Octopress迁到 <a href="https://github.com/getpelican/pelican">Pelican</a> ，结果有了计划不立马开搞心里就是不踏实。于是别人都开始期末大复习时我开始了又一轮折腾……<br />
+<!--more--></p>
+<h3>Why a Blog</h3>
+<p>一开始是在网易博客开始写博的，很多人最开始应该都是用的第三方博客系统。其实我不是喜欢写东西的人，高中最讨厌的事就是写作文。开博是希望给平时『折腾和学习的心得』找个安放的场所，而且我是个怀旧的人，以后回头看自己的经历肯定也别有滋味。<br />
+第三方博客嘛就没想太多，直接在网易了。当时也没什么互联网经验，现在再选可能会考虑<a href="http://www.diandian.com">点点</a>，blogspot，wordpress，甚至是<a href="http://segmentfault.com/blogs">SegmentFault</a>那些吧。  </p>
+<h3>Why Octopress</h3>
+<p>为什么迁到Octopress？  </p>
+<ul>
+<li>逼格高：  单从这方面考虑，网易新浪什么的没法比吧？</li>
+<li>Github托管： 对于买不起主机/VPS的穷学生，一个可以托管博客的地方实在是天堂</li>
+<li>静态博客： 都是静态页面，速度快。不过考虑到github在朝内的速度。。。</li>
+<li>Geek： Markdown + Git ， Commandline更新博客。</li>
+<li>自己域名</li>
+<li>高度可定制：  多种主题、多个插件。比如不喜欢<a href="http://disqus.com/">Disqus</a>的话可以自己用<a href="http://duoshuo.com">多说</a>的代码替换掉。不想要文章url 是 <code>/blog/2011-01-01-article-title-name</code> 的形式可以自己在 <code>_config.yaml</code> 自定义，etc。</li>
+</ul>
+<p>于是在<a href="http://yakiang.com/blog/hello-blog">去年4月份</a>就把博客迁移到了Octopress。</p>
+<h3>Why not Octopress</h3>
+<p>既然Octopress这么好，那现在又为什么要舍弃它？ 一个最重要的原因是，不懂Ruby。<br />
+从一开始用Octopress就有种莫名的不舒服，大概是因为不懂Ruby，不懂 <code>Rakefile</code> 语法，甚至不知道最基本的 <code>gem</code>，<code>bundle</code> 和 <code>rake</code> 分别是什么。总之就是不知道整个Octopress是如何being powered的，而不清楚自己的博客是如何运转的这种感觉实在有点糟。<br />
+另外我换系统比较频繁，每次<a href="http://yakiang.com/blog/wtf-three-days#octopress">恢复Octopress</a>都需要从头安装 rvm，ruby，这些东西，而受我朝网络环境影响这个过程总是相当漫长。。。  </p>
+<h3>Why Pelican</h3>
+<p>直到前阵子，发现python也有Github托管的静态博客，比如pelican 。然后觉得这是必然的，强大的python社区怎么会没有这种东西，我之前为何没有想到去搜一下。于是初步了解后下定决心寒假来折腾。其实这是考虑再三做出来的决定，首先原来的Octopress总体来讲还是很好的，没有什么大问题；其次如果迁移博客意味着很多文件路径会改变，博文里面引用的图片可能也会导致404什么的。</p>
+<h3>Why not Pelican</h3>
+<p>于是没等到寒假，新年一过我就开搞了。一开始没照着文档来，没有使用 <code>virtualenv</code>，结果一直遇到问题，最基本的 import 问题，甚至期间把 <code>pip</code> 都搞坏了。最终还是引入 <code>virtualenv</code> 解决。<br />
+<img src='http://img5.picbed.org/uploads/2014/01/pelicanblog.png' width='700px' /><br />
+然后开始看<a href="http://docs.getpelican.com/en/3.3.0/">配置文档</a>，一看那个规模就吓尿了。密集文字恐惧症让我顿时不想继续配置下去了。<br />
+所以其实我没有『why not pelican』的发言权，毕竟没有真正使用过。<br />
+于是又想到很久以前的想法——自己写博客。 <br />
+但我还是先看了下 <a href="https://ghost.org/">Ghost</a> ，由于最近看到不少文章都是搭在 ghost 上的，所以多了解了下，确实很简洁漂亮的博客，基于 Node.js 。但当我看到 getting started  需要注册帐号时，那股热情顿时给冲灭了。。加上自己写博客的想法越来越重，最终还是放下 ghost，开始造轮子。  </p>
+<hr />
+<p>一度把写个自己的博客当作一个阶段性目标，后来想到很多东西要顾虑便放弃，比如评论什么的。现在又把它提上议程，于是有些东西必须一开始就决定好：  </p>
+<ul>
+<li>什么框架？ 由于加入了学校的 iGEM团队，去年他们的项目使用 <code>flask</code> + <code>sqlite</code> 做后台，我只用过 <code>django</code>,<code>web.py</code>,<code>tornado</code>，于是便想趁着这机会顺便把 flask 学起来。</li>
+<li>动态还是静态？一开始确实也想写静态的，每次写了新文章把受影响页面（首页，<a href="/archives">archives</a>，etc）自动更新一遍。但还是要用数据库保存一下文章列表，理由是<a href="/tags">标签页面</a>用动态的，因为把标签页面设成静态的更新起来好繁琐。于是选择了SQLite -- python's builtin database.</li>
+<li>评论？分享？ 这些自己写的话确实很麻烦，所以利用现有轮子：<a href="http://duoshuo.com">多说</a> 和 <a href="http://jiathis.com">加网</a> 。</li>
+</ul>
+<p>很多人说<a href="http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">这个flask教程</a>是极好的，所以我就从它开始看，结果看到模板那里就自己先动手开写了。总的来说，flask 上手确实很快。但url 配置那里写到后面觉得有点不科学，或许是我不熟的原因（也没找到文档有讲），如果路径有很多层 <code>/abc/path/to/some/particular/file</code> ，我直接用</p>
+<pre><code>@app.route('/abc/&lt;path:path&gt;')
+</code></pre>
+<p>获取到全部路径，然后具体路径再自己去解析。不知道是不是有更好的做法？  </p>
+<p>然后整个过程最痛苦的我觉得就是前端了，不知道前端有什么『系统性』的 build 和测试方法，反正我是具体页面生成后修改 css 参数什么的一点点调试的，真心低效和痛苦。好在我不需要太漂亮的东西，simple 就好。所以整体风格是：白底，大标题，文章居中占地面积别太广，两边留空，字体大点，行间距也大一点。</p>
+<p>大致功能写好花了两三天，结果觉得生成静态页面的代码太难看了，结合模板的话要把模板语法用python写进 html 文件里，丑到自己看不下去。
+<img alt="ugly code" src="http://img1.tuchuang.org/uploads/2014/01/ugly-code.png" />    </p>
+<p>于是纠结好久，还是决定抛弃静态这种做法，每次动态生成页面。毕竟访问量不大 =。=  修改过后其实 ugly code 还是有的，只是少了一些罢了。<br />
+    最后把博文图片路径处理好（都放到<a href="http://tuchuang.org">图床</a>上了），<a href="/atom.xml">atom.xml</a> 写好（其实没严格按标准来），把 <code>/projects</code> 和 <code>/tags</code> 页面搞上去就差不多了。<br />
+虽然有很多之前Octopress的影子，但自我感觉还是很不一样的。反正有一个闲置的低配置VPS，速度也一般，host 在那儿也不错。  </p>
+<p>其实现在这样不见得好过Octopress：</p>
+<ul>
+<li>要自己build RSS 页面</li>
+<li>要服务器，到期了得续期或迁移</li>
+<li>可能不安全。毕竟代码都开放着呢，只能祈祷遇到的是白帽了。。 ：P</li>
+</ul>
+<p>不过生命在于折腾嘛～ 在这两天又<a href="http://www.v2ex.com/t/95972#reply0">看到更多的python写的静态博客</a>，但我已经不动心了哈哈。  </p>
+{% endblock %}
