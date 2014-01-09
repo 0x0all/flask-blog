@@ -10,7 +10,7 @@ from config import *
 info = {
         'date': '',
         'title': '',
-        'tags': ','
+        'tags': ''
     }
 
 

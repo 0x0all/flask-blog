@@ -101,8 +101,7 @@ a:hover {
 
 pre,code{
     background-color: #e3debb;
-    padding-left: 6px;
-    padding-right: 6px;
+    padding: 6px;
     width: 100%;
     font-size:18px;
     overflow: auto;
