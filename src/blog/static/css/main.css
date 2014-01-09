@@ -59,7 +59,8 @@ a:hover {
 }
 
 #post img {
-    padding-left: 20%;
+    margin: auto;
+    display: block;
 }
 
 #footer {
