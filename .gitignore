@@ -1,5 +1,6 @@
 *.py[cod]
 src/blog/db.py
+logs/*
 
 # C extensions
 *.so
