@@ -1,5 +1,5 @@
 date:2013-08-08
-tags:,linux,octopress
+tags:linux,octopress,blog
 title:wtf-three-days
 <!---->
 #折腾的三天,真苦逼

@@ -1,5 +1,5 @@
 date:2013-04-21
-tags:,python,baidu
+tags:python,baidu
 title:tieba-autosign-with-python
 <!---->
 #Python实现的贴吧签到

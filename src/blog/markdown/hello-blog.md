@@ -1,5 +1,5 @@
 date:2013-04-19
-tags:,blog
+tags:blog,ruby,octopress
 title:hello-blog
 <!---->
 #Hello Blog

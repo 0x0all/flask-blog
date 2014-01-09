@@ -1,5 +1,5 @@
 date:2013-11-16
-tags:,javascript,canvas,c++,md5,vim,tornado
+tags:javascript,canvas,c++,md5,vim,tornado
 title:recent-projects
 <!---->
 #Recent projects
@@ -31,7 +31,7 @@ title:recent-projects
 + 判断方块是否撞柱；如果是则粉碎方块并重头开始
 
 所以一个看起来简单的小游戏细分开来是有好多内容而且一点也不容易的，我也是做下去才慢慢觉得的。  
-第1步很简单。第2步实现前就先要决定好canvas某一点的坐标如何定位。花了挺久才让它run起来。然后方块的翻转总是实现不了，StackOverflow上关于`canvas rotate`问题很多，但一直不知道怎么apply到自己的代码里去。后来看了一篇国外博客才成功。但是虽然能翻转了，却发现自己的翻转180度好难看。。一点也不协调和连续，到达顶点也没有一个减速为0的过程（这一步确实一开始没考虑到，后来和flash版作比较才发现的）。然后这一点让我没什么信心或者说动力做下去了。想到在方块翻转的情况下去判断它是否撞柱了我就觉得痛苦。所以最终它暂时止步这里，demo[在这](http://yakiang.com/projects/js-toys/space-is-key)，求鄙视。  
+第1步很简单。第2步实现前就先要决定好canvas某一点的坐标如何定位。花了挺久才让它run起来。然后方块的翻转总是实现不了，StackOverflow上关于`canvas rotate`问题很多，但一直不知道怎么apply到自己的代码里去。后来看了一篇国外博客才成功。但是虽然能翻转了，却发现自己的翻转180度好难看。。一点也不协调和连续，到达顶点也没有一个减速为0的过程（这一步确实一开始没考虑到，后来和flash版作比较才发现的）。然后这一点让我没什么信心或者说动力做下去了。想到在方块翻转的情况下去判断它是否撞柱了我就觉得痛苦。所以最终它暂时止步这里，demo[在这](/projects/js-toys/space-is-key)，求鄙视。  
 与此同时我发现了另一个人做了同一个东西，也是canvas版，它只是个[demo](http://jsrun.it/ladeng6666/gn0D)，不是完整的游戏。但却比我的流畅协调和顺滑多了。同时也有[源代码](http://bbs.9ria.com/thread-128498-1-1.html)，分析了下好像run的原理跟我就不一样了。或许这就是差距吧。。如果未来某天想继续实现，应该要借鉴他的代码了～ T_T  
 
 ###sing-the-pics

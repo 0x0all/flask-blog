@@ -1,5 +1,5 @@
 date:2013-11-27
-tags:,interview,front-end
+tags:interview,front-end
 title:netease-internship-interview
 <!---->
 #网易前端面试记

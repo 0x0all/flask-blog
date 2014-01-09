@@ -30,14 +30,14 @@ def archives():
 def tags(tag):
     c = getDB()
     posts = c.execute(
-        "SELECT * FROM posts WHERE tags like ? ORDER BYdate DESC",
+        "SELECT * FROM posts WHERE tags like ? ORDER BY date DESC",
         ('%,{}%'.format(tag),
          )).fetchall()
     return render_template('pages/tags.html', posts=posts)
 
 
 @blog.route('/blog/<title>')
-def index(title):
+def posts(title):
     return render_template('posts/{}.html'.format(title))
 
 

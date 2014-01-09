@@ -1,5 +1,5 @@
 date:2013-10-12
-tags:,javascript,canvas,tornado,html5,weibo
+tags:javascript,canvas,tornado,html5,weibo
 title:visual-weibo-relations
 <!---->
 #可视化微博关系

@@ -1,10 +1,10 @@
 date:2013-06-28
-tags:,weixin,renren,python,sae
+tags:weixin,renren,python,sae
 title:set-up-your-treehole
 <!---->
 #[微信-人人]树洞教程
 寒假时给自己学校建了个微信-微博的树洞，之后陆续收到有人请教我怎么做的邮件，而且还是微信-人人的。由于没接触过人人开发所以也没帮忙。后来偶然去看了下人人API神马的，用python很快就写了个能发布状态的脚本。后来公布自己邮箱后越来越多人联系我问我怎么搞，在帮三个大学搭起人人树洞后我们也进入考试周- - 今天考完了，还是来把教程简单写一遍，有需自取，免得我一个一个去说怎么做。。  
-转载请注明本文链接！微信-微博树洞教程在[这里](http://yakiang.com/blog/set-up-your-weibo-treehole/)  
+转载请注明本文链接！微信-微博树洞教程在[这里](/blog/set-up-your-weibo-treehole/)  
 说明：本教程的树洞基于SAE平台，使用Python实现（不会编程也不影响）。在开始之前，你应该有一个人人的公共主页；然后去[SAE](http://sae.sina.com.cn) 注册一个SAE帐号(而且要尽快通过手机复验、实名认证），还要去[微信公众平台](http://mp.weixin.qq.com) 注册一个微信公众帐号并通过审核。这些自己搞定，就不细说了。  
 <!--more-->
 首先，打开[这个网页](http://sae.sina.com.cn/?m=myapp&a=create)填写并创建应用信息：二级域名可以随便写，比如你的大学拼音，不过不能和别人重复；应用名称同样随便写；开发语言记得选python；应用类型默认就好。  

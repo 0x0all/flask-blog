@@ -1,5 +1,5 @@
 date:2013-09-11
-tags:,Vim,Notes,Python,VPS,SSH,Web,Shell
+tags:vim,python,vps,ssh,web,shell
 title:notes-of-summer
 <!---->
 #Notes of Summer

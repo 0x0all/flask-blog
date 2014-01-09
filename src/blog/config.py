@@ -2,7 +2,8 @@
 
 PAGINATE = 10
 
-DBFILE = '/var/www/flask-blog/db/posts.db'
+# DBFILE = '/var/www/flask-blog/db/posts.db'
+DBFILE = '/home/yakiang/Templates/flask-blog/db/posts.db'
 
 INFO_CONTENT_SPLIT = '<!---->\n'
 

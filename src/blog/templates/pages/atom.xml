@@ -5,7 +5,7 @@
     </title>
     <link href="http://yakiang.com/atom.xml" rel="self"/>
     <link href="http://yakiang.com/"/>
-    <updated>posts[0][0]T20:20:00+08:00</updated>
+    <updated>posts[0][0]T10:20:30+08:00</updated>
     <id>http://yakiang.com/</id>
     <author>
         <name>
@@ -19,7 +19,7 @@
             <![CDATA[ {{post[1] }}]]>
         </title>
         <link href="http://yakiang.com/blog/{{post[0]}}"/>
-        <updated>{{post[0]}}T20:20:00+08:00</updated>
+        <updated>{{post[0]}}T10:20:30+08:00</updated>
         <id>http://yakiang.com/blog/{{post[0]}}</id>
         <content type="html">
             <![CDATA[ {{post[3]}} ]]>

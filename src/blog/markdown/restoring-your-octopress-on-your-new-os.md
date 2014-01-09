@@ -1,10 +1,10 @@
 date:2013-05-09
-tags:,octopress,github,linux
+tags:octopress,github,linux,blog
 title:restoring-your-octopress-on-your-new-os
 <!---->
 #重装系统后恢复Octopress
 2013-8-8 更新：  
-这篇恢复教程似乎不是很好用，主要是自己当时懂得更少，如果需要可以看看[这篇](http://yakiang.com/blog/wtf-three-days/#octopress)   
+这篇恢复教程似乎不是很好用，主要是自己当时懂得更少，如果需要可以看看[这篇](/blog/wtf-three-days/#octopress)   
 <br>
   
 =========题外话==========  

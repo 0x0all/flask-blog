@@ -13,6 +13,13 @@ info = {
         'tags': ','
     }
 
+tmplSyntax = [
+        '{% extends "post.html" %}', 
+        '{% block post %}',
+        '',
+        '{% endblock %}'
+    ]
+
 def markdownToHtml(mdfile):
     text = open(mdfile, 'r').read().decode('utf-8')
     postinfo, content = text.split(INFO_CONTENT_SPLIT)
@@ -24,13 +31,13 @@ def markdownToHtml(mdfile):
         info[k] = v
 
     html = markdown.markdown(content).encode('utf-8')
+    tmplSyntax[2] = html
     with open('templates/posts/{}.html'.format(info['title']), 'w') as f:
-        f.write('\n'.join(['{% extends "post.html" %}', '{% block post %}',
-            html, '{% endblock %}']))
+        f.write('\n'.join(tmplSyntax))
 
     preview = html.split(PREVIEW_MORE_SPLIT[:-1])[0].decode('utf-8')
     c.execute("INSERT OR REPLACE INTO posts VALUES (?, ?, ?, ?)", [info['date'],
-        info['title'], info['tags'], preview])
+                info['title'], ',{},'.format(info['tags']), preview])
 
     conn.commit()
     conn.close()
@@ -47,7 +54,7 @@ if __name__ == '__main__':
         exit(0)
 
     except IndexError as e:
-        print 'Please specific a markdown filename'
+        print 'Please specific a markdown file'
 
     except Exception as e:
         print e

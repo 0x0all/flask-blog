@@ -1,5 +1,5 @@
 date:2013-09-30
-tags:,weibo,twitter,python
+tags:weibo,twitter,python
 title:weibo-rtkcn
 <!---->
 #微博版中文锐推客
