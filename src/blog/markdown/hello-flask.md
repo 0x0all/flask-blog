@@ -53,14 +53,13 @@ title:hello-flask
 ![ugly code](http://img1.tuchuang.org/uploads/2014/01/ugly-code.png)    
 
 于是纠结好久，还是决定抛弃静态这种做法，每次动态生成页面。毕竟访问量不大 =。=  修改过后其实 ugly code 还是有的，只是少了一些罢了。  
-    最后把博文图片路径处理好（都放到[图床](http://tuchuang.org)上了），[atom.xml](/atom.xml) 写好（其实没严格按标准来），把 `/projects` 和 `/tags` 页面搞上去就差不多了。  
+最后把博文图片路径处理好（都放到[图床](http://tuchuang.org)上了），[atom.xml](/atom.xml) 写好（其实没严格按标准来），把 `/projects` 和 `/tags` 页面搞上去就差不多了。  
 虽然有很多之前Octopress的影子，但自我感觉还是很不一样的。反正有一个闲置的低配置VPS，速度也一般，host 在那儿也不错。  
 
 其实现在这样不见得好过Octopress：
 
-+ 要自己build RSS 页面
 + 要服务器，到期了得续期或迁移
-+ 可能不安全。毕竟代码都开放着呢，只能祈祷遇到的是白帽了。。 ：P
++ 可能不安全。毕竟建站经验不多，而且代码都开放着呢，只能祈祷遇到的是白帽了。。 ：P
 
 不过生命在于折腾嘛～ 在这两天又[看到更多的python写的静态博客](http://www.v2ex.com/t/95972#reply0)，但我已经不动心了哈哈。  
 
