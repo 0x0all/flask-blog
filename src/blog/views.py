@@ -11,6 +11,7 @@ def getDB():
 
 
 @blog.route('/')
+@blog.route('/blog')
 @blog.route('/home')
 def home():
     c = getDB()
@@ -26,14 +27,27 @@ def archives():
     return render_template('pages/archives.html', posts=posts)
 
 
+@blog.route('/tags/')
 @blog.route('/tags/<tag>')
-def tags(tag):
+def tags(tag=None):
     c = getDB()
-    posts = c.execute(
-        "SELECT * FROM posts WHERE tags like ? ORDER BY date DESC",
-        ('%,{}%'.format(tag),
-         )).fetchall()
-    return render_template('pages/tags.html', posts=posts)
+
+    if not tag:
+        posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
+        tags = set()
+        for p in posts:
+            for tag in p[2].split(','):
+                if tag: tags.add(tag)
+        tags = list(tags)
+        tags.sort()
+        return render_template('pages/tags.html', tags=tags)
+
+    else:
+        posts = c.execute(
+            "SELECT * FROM posts WHERE tags like ? ORDER BY date DESC",
+            ('%,{},%'.format(tag),
+             )).fetchall()
+        return render_template('pages/subtags.html', posts=posts)
 
 
 @blog.route('/blog/<title>')
@@ -68,7 +82,7 @@ def robots():
 
 
 from flask import make_response
-@blog.route('/atom.xml')
+@blog.route('/atom.xml/')
 def Atom():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC LIMIT 10").fetchall()
