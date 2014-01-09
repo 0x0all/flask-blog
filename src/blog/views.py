@@ -24,7 +24,7 @@ def home():
 def archives():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
-    return render_template('pages/archives.html', posts=posts)
+    return render_template('pages/archives.html', posts=posts, title='Archives')
 
 
 @blog.route('/tags/')
@@ -40,24 +40,24 @@ def tags(tag=None):
                 if tag: tags.add(tag)
         tags = list(tags)
         tags.sort()
-        return render_template('pages/tags.html', tags=tags)
+        return render_template('pages/tags.html', tags=tags, title='Tags')
 
     else:
         posts = c.execute(
             "SELECT * FROM posts WHERE tags like ? ORDER BY date DESC",
             ('%,{},%'.format(tag),
              )).fetchall()
-        return render_template('pages/subtags.html', posts=posts)
+        return render_template('pages/subtags.html', posts=posts, title='Tags')
 
 
 @blog.route('/blog/<title>')
 def posts(title):
-    return render_template('posts/{}.html'.format(title))
+    return render_template('posts/{}.html'.format(title), title=title)
 
 
 @blog.route('/about/')
 def about():
-    return render_template('pages/about/index.html')
+    return render_template('pages/about/index.html', title='About')
 
 
 @blog.route('/projects/', defaults={'path': 'index'})
@@ -65,15 +65,15 @@ def about():
 def projects(path):
     try:
         htmlfile = 'pages/projects/{}.html'.format(path)
-        return render_template(htmlfile)
+        return render_template(htmlfile, title='Projects')
     except Exception as e:
         htmlfile = 'pages/projects/{}/index.html'.format(path)
-        return render_template(htmlfile)
+        return render_template(htmlfile, title='Projects')
 
 
 @blog.route('/resume/')
 def resume():
-    return render_template('pages/resume/index.html')
+    return render_template('pages/resume/index.html', title='Resume')
 
 
 @blog.route('/robots.txt')
