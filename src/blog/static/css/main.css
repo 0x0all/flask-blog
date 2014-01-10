@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'Overlock';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Overlock'), local('Overlock-Regular'), url(/static/css/overlock.woff) format('woff');
+}
+
 html, body {
     margin: 0;
     padding: 0;
