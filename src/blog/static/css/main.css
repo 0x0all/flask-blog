@@ -40,6 +40,10 @@ a:hover {
     cursor: move;
 }
 
+#backtotop:hover {
+    background-color: #ffc19f;
+}
+
 #pages {
     float: left;
 }

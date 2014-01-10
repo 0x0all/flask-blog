@@ -13,11 +13,3 @@ toTopImg.onclick = function backToTop() {
         }
     }, 10);
 }
-
-toTopImg.onmouseover = function wannaToTop() {
-    toTopImg.style.backgroundColor = '#ffc19f';
-}
-
-toTopImg.onmouseout = function wannaToTop() {
-    toTopImg.style.backgroundColor = '#ffffff';
-}
