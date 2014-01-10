@@ -9,8 +9,9 @@ I did plan to make it static at first, but abandon it when it generated the ugly
 
 ---
 
-Create a post:   
-(in src/blog)
+In `src/blog`  
+
+create a post:   
     
     python newpost.py post-title
 
