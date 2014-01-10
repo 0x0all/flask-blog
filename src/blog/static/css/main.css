@@ -27,6 +27,13 @@ a:hover {
     margin-bottom: 100px;
 }
 
+#forkme {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    border: 0;
+}
+
 #links {
     padding-top: 30px;
     font-size: 24px;
