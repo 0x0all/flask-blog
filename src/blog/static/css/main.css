@@ -34,6 +34,10 @@ a:hover {
 
 #backtotop {
     display: none;
+    position: fixed;
+    left: 3%;
+    bottom: 3%;
+    cursor: move;
 }
 
 #pages {
