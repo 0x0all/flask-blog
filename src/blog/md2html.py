@@ -50,7 +50,7 @@ def markdownToHtml(mdfile):
 
 if __name__ == '__main__':
     try:
-        mdfile = sys.argv[1].strip("'")
+        mdfile = sys.argv[1].strip("'").strip('"')
         conn = sqlite3.connect(DBFILE)
         c = conn.cursor()
         markdownToHtml(mdfile)
