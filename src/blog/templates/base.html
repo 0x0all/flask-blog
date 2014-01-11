@@ -12,10 +12,12 @@
     <body>
         <div id="container">
             <div id="header">
+                <!-- Fork Me -->
                 <a id="forkme" href="https://github.com/yakiang/flask-blog">
                     <img src="/static/images/forkme.png" alt="Fork me on GitHub">
                 </a>
                 <a style='padding-left:40%;' href='/'><img src="/static/images/favicon.png"><br></a>
+
                 <div id='links'>
                     <div id='pages'>
                         <a href='/archives'>Archives</a>
@@ -31,9 +33,12 @@
                 </div>
                 <img id='backtotop' src='/static/images/backtotop.png'>
             </div>
+
+            <!-- Posts or Postlist -->
             {% block maincontent %} {% endblock %}
             <br><br><br><br><br>
-            <!-- footer -->
+
+            <!-- Footer Messages -->
             <div id="footer">
                 <hr width='150%' color='silver'>
                 <span class='copyright'>yakiang © 2013-2014.</span>
