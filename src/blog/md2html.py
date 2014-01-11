@@ -7,12 +7,14 @@ import markdown
 import datetime
 from config import *
 
+# markdown file info
 info = {
         'date': '',
         'title': '',
         'tags': ','
     }
 
+# jinja2 syntax to insert to html
 tmplSyntax = [
         '{% extends "post.html" %}', 
         '{% block post %}',
@@ -21,6 +23,7 @@ tmplSyntax = [
     ]
 
 def markdownToHtml(mdfile):
+    ''' convert .md to .html '''
     text = open(mdfile, 'r').read().decode('utf-8')
     postinfo, content = text.split(INFO_CONTENT_SPLIT)
     infolist = postinfo.split('\n')
@@ -51,11 +54,12 @@ if __name__ == '__main__':
         conn = sqlite3.connect(DBFILE)
         c = conn.cursor()
         markdownToHtml(mdfile)
-        exit(0)
 
     except IndexError as e:
         print 'Please specific a markdown file'
 
     except Exception as e:
         print e
-        exit(-1)
+
+    finally:
+        exit()
