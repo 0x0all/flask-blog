@@ -15,10 +15,12 @@ info = {
 
 
 def newPost(title):
+    ''' create a new post '''
     date = datetime.date.today().__str__()
     info['title'] = title
     info['date'] = date
 
+    # initial markdown content
     with open('markdown/{}.md'.format(title), 'w') as f:
         for key in info:
             f.write(':'.join([key, info[key]]) + '\n')
@@ -34,11 +36,12 @@ if __name__ == '__main__':
         conn = sqlite3.connect(DBFILE)
         c = conn.cursor()
         newPost(title)
-        exit(0)
         
     except IndexError as e:
         print 'Please specific a title'
 
     except Exception as e:
         print e
-        exit(-1)
+    
+    finally:
+        exit()
