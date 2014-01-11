@@ -39,13 +39,13 @@ div {
     color:#f2f2f2;
 }
 
-#item {
+.item {
     font-size:40px;
     font-weight:bold;
     padding-left:200px;
 }
 
-#detail {
+.detail {
     font-size:30px;
     line-height:50px;
     padding-left:300px;
@@ -55,9 +55,13 @@ div {
     color:#ffffff;
 }
 
-#timestamp {
+.note {
     position:absolute;
+    line-height: 40px;
     bottom:10px;
     right:20px;
+}
 
+.note a {  
+    color: yellow;
 }
