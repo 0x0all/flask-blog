@@ -1,6 +1,10 @@
 window.onscroll = function() {
     // display: none if on top
-    document.getElementById('backtotop').style.display = (document.body.scrollTop) ? 'block' : 'none';
+    if (document.documentElement.scrollTop||document.body.scrollTop) {
+        document.getElementById('backtotop').style.display = 'block';
+    } else {
+        document.getElementById('backtotop').style.display = 'none';
+    }
 }
 
 
@@ -10,7 +14,7 @@ toTopImg.onclick = function backToTop() {
     // scroll to top
     var scroll = setInterval(function() {
         window.scrollBy(0, -150);
-        if (document.body.scrollTop === 0) {
+        if (!(document.documentElement.scrollTop||document.body.scrollTop)) {
             // reach top
             clearInterval(scroll);
         }
