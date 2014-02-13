@@ -1,5 +1,5 @@
 date:2014-02-13
-tags:web,cache,crontab,server
+tags:web,cache,crontab,server,vps
 title:speed-up-my-site
 <!---->
 #一次网站优化经历
