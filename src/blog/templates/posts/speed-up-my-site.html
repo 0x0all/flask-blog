@@ -38,5 +38,5 @@ except Exception as e:
 <p>其实加快网站访问方法很多，yahoo 的这篇 <a href="http://developer.yahoo.com/performance/rules.html">Best Practices For Speeding Up Your Web Site</a> 罗列了不少，比如 <code>CDN</code> ，使用 <code>gzip</code> 压缩， 做好缓存，压缩 css/scripts ，放好 css/scritps 的位置，重定向时使用 3XX response code 而不是用 <code>&lt;meta&gt;</code> 标签或用 js ，等等。<br />
 其他的还没有研究，不过我对缓存倒是很有兴趣。在 heroku 的这篇 <a href="https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers">Increasing Application Performance with HTTP Cache Headers</a> 就详细介绍了在 http header 可以怎么设置缓存。文章还是很好的，只是我弄懂了大致的那些概念后却不知道怎么实现了，比如一个 html 文件里有几个 css 、js 、 image 文件，每个文件都有想设置的 <code>cache header</code> ，我应该怎么做，在 flask 设置（好像做不到）还是 Nginx ？ 文件多的话一个个写好像不大科学，没有更好的做法吗？但是搜来搜去好像都没找到相关的 tutorial …… 过几天去找个人多的 forum 问一下好了。 </p>
 <hr />
-<p>我觉得以后做 Devops 其实挺好的，关键是这是自己喜欢做的事。本来这学期开始可以去做相关实习了的，搞到最后还是去不成，而且接下来一段时间可能都做不了了。最近实在很迷茫，前途未卜 =。=  唉 </p>
+<p>我觉得以后做 backend developer 其实挺好的，关键是这是自己喜欢做的事。本来这学期开始可以去做相关实习了的，搞到最后还是去不成，而且接下来一段时间可能都做不了了。最近实在很迷茫，前途未卜 =。=  唉 </p>
 {% endblock %}
