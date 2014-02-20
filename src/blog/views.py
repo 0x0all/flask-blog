@@ -1,5 +1,5 @@
 #-*-coding:utf-8-*-
-from flask import render_template, url_for
+from flask import render_template, url_for, make_response
 from blog import blog
 from config import *
 import sqlite3
@@ -81,7 +81,13 @@ def robots():
     return render_template('pages/robots.txt')
 
 
-from flask import make_response
+@blog.route('/sitemap.xml/')
+def sitemap():
+    response = make_response(render_template('pages/sitemap.xml'))
+    response.headers['Content-Type'] = 'application/xml'
+    return response
+
+
 @blog.route('/atom.xml/')
 def Atom():
     c = getDB()
