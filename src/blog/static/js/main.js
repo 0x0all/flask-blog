@@ -1,4 +1,5 @@
 window.onscroll = function() {
+    hljs.initHighlightingOnLoad();  // for highlight.js
     // display: none if on top
     if (document.documentElement.scrollTop||document.body.scrollTop) {
         document.getElementById('backtotop').style.display = 'block';
