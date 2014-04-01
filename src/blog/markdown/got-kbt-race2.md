@@ -1,5 +1,5 @@
 date:2014-04-01
-tags:
+tags:keyboard
 title:got-kbt-race2
 <!---->
 #入手 kbt race2
