@@ -24,7 +24,8 @@ def home():
 def archives():
     c = getDB()
     posts = c.execute("SELECT * FROM posts ORDER BY date DESC").fetchall()
-    return render_template('pages/archives.html', posts=posts, title='Archives')
+    return render_template('pages/archives.html',
+                           posts=posts, title='Archives')
 
 
 @blog.route('/tags/')
@@ -37,7 +38,8 @@ def tags(tag=None):
         tags = set()
         for p in posts:
             for tag in p[2].split(','):
-                if tag: tags.add(tag)
+                if tag:
+                    tags.add(tag)
         tags = list(tags)
         tags.sort()
         return render_template('pages/tags.html', tags=tags, title='Tags')

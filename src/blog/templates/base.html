@@ -1,65 +1,65 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-        <link rel="shortcut icon" href="/static/images/favicon.png">
-        <link rel="stylesheet" href="/static/css/highlight.css">
-        {% if title %}
-        <title>{{title}} - yakiang's blog</title>
-        {% else %}
-        <title>yakiang's blog</title>
-        {% endif %}
-    </head>
-    <body>
-        <div id="container">
-            <div id="header">
-                <!-- Fork Me -->
-                <a id="forkme" href="https://github.com/yakiang/flask-blog">
-                    <img src="/static/images/forkme.png" alt="Fork me on GitHub">
-                </a>
-                <a style='padding-left:40%;' href='/'><img src="/static/images/favicon.png"><br></a>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+    <link rel="shortcut icon" href="/static/images/favicon.png">
+    <link rel="stylesheet" href="/static/css/highlight.css">
+    {% if title %}
+    <title>{{title}} - yakiang's blog</title>
+    {% else %}
+    <title>yakiang's blog</title>
+    {% endif %}
+  </head>
+  <body>
+    <div id="container">
+      <div id="header">
+        <!-- Fork Me -->
+        <a id="forkme" href="https://github.com/yakiang/flask-blog">
+          <img src="/static/images/forkme.png" alt="Fork me on GitHub">
+        </a>
+        <a style='padding-left:40%;' href='/'><img src="/static/images/favicon.png"><br></a>
 
-                <div id='links'>
-                    <div id='pages'>
-                        <a href='/archives'>Archives</a>
-                        <a href='/about'>About</a>
-                        <a href='/projects'>Projects</a>
-                    </div>
-                    <div id='mysns'>
-                        <a target='_blank' href='https://twitter.com/yakiang'><img src='/static/images/twitter.png'></a>
-                        <a target='_blank' href='https://github.com/yakiang'><img src='/static/images/github.png'></a>
-                        <a target='_blank' href='https://plus.google.com/103192585919368849071'><img src='/static/images/google.png'></a>
-                        <a target='_blank' href='/atom.xml'><img src='/static/images/rss.png'></a>
-                    </div>
-                </div>
-                <img id='backtotop' src='/static/images/backtotop.png'>
-            </div>
-
-            <!-- Posts or Postlist -->
-            {% block maincontent %} {% endblock %}
-            <br><br><br><br><br>
-
-            <!-- Footer Messages -->
-            <div id="footer">
-                <hr width='150%' color='silver'>
-                <span class='copyright'>yakiang © 2013-2014.</span>
-                <span class='copyright'>Powered by Flask.</span>
-            </div>
+        <div id='links'>
+          <div id='pages'>
+            <a href='/archives'>Archives</a>
+            <a href='/about'>About</a>
+            <a href='/projects'>Projects</a>
+          </div>
+          <div id='mysns'>
+            <a target='_blank' href='https://twitter.com/yakiang'><img src='/static/images/twitter.png'></a>
+            <a target='_blank' href='https://github.com/yakiang'><img src='/static/images/github.png'></a>
+            <a target='_blank' href='https://plus.google.com/103192585919368849071'><img src='/static/images/google.png'></a>
+            <a target='_blank' href='/atom.xml'><img src='/static/images/rss.png'></a>
+          </div>
         </div>
+        <img id='backtotop' src='/static/images/backtotop.png'>
+      </div>
 
-        <script src="/static/js/highlight.js"></script>
-        <script src='/static/js/main.js'></script>
-        <!-- Google Analytics -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        
-            ga('create', 'UA-47210694-1', 'yakiang.com');
-            ga('send', 'pageview');
-        
-        </script>
+      <!-- Posts or Postlist -->
+      {% block maincontent %} {% endblock %}
+      <br><br><br><br><br>
 
-    </body>
+      <!-- Footer Messages -->
+      <div id="footer">
+        <hr width='150%' color='silver'>
+        <span class='copyright'>yakiang © 2013-2014.</span>
+        <span class='copyright'>Powered by Flask.</span>
+      </div>
+    </div>
+
+    <script src="/static/js/highlight.js"></script>
+    <script src='/static/js/main.js'></script>
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47210694-1', 'yakiang.com');
+      ga('send', 'pageview');
+
+    </script>
+
+  </body>
 </html>

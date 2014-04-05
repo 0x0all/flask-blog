@@ -9,27 +9,29 @@ from config import *
 
 # markdown file info
 info = {
-        'date': '',
-        'title': '',
-        'tags': ','
+    'date': '',
+    'title': '',
+    'tags': ','
     }
 
 # jinja2 syntax to insert to html
 tmplSyntax = [
-        '{% extends "post.html" %}', 
-        '{% block post %}',
-        '',
-        '{% endblock %}'
+    '{% extends "post.html" %}',
+    '{% block post %}',
+    '',
+    '{% endblock %}'
     ]
+
 
 def markdownToHtml(mdfile):
     ''' convert .md to .html '''
     text = open(mdfile, 'r').read().decode('utf-8')
     postinfo, content = text.split(INFO_CONTENT_SPLIT)
     infolist = postinfo.split('\n')
-    
+
     for i in infolist:
-        if not i: continue
+        if not i:
+            continue
         k, v = i.split(':')
         info[k] = v
 
@@ -55,7 +57,7 @@ if __name__ == '__main__':
         c = conn.cursor()
         markdownToHtml(mdfile)
 
-    except IndexError as e:
+    except IndexError:
         print 'Please specific a markdown file'
 
     except Exception as e:
