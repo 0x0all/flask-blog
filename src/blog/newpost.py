@@ -32,7 +32,7 @@ def newPost(title):
 
 if __name__ == '__main__':
     try:
-        title = sys.argv[1].strip("'").strip('"')
+        title = sys.argv[1].strip("'").strip('"').replace(' ', '-')
         conn = sqlite3.connect(DBFILE)
         c = conn.cursor()
         newPost(title)
